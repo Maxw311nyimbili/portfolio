@@ -36,7 +36,7 @@ export default function CategoryPage() {
                 problem: 'The "Information Overload Paradox" in academia: access to knowledge has increased exponentially, but human processing speed remains constant. Researchers conducting systematic reviews must filter thousands of papers, often relying on shallow heuristics (titles/abstracts) due to time constraints. This leads to "research silos" where cross-disciplinary insights are missed. The core challenge is not just reading faster, but structurally deconstructing complex arguments and methodologies into standardized, comparable formats without losing semantic nuance.',
                 impact: 'Democratizes access to high-level research synthesis. By reducing the "time-to-insight" from 45 minutes (average paper reading time) to <10 seconds, it enables researchers to perform "semantic scanning" of entire journals. This tool shifts the workflow from linear reading to hierarchical analysis—users first grasp the core arguments and methodology via the AI synthesis, then dive deep only into the most relevant sections, effectively increasing research throughput by an order of magnitude.',
                 approach: 'Engineered a low-latency, full-stack inference pipeline with a dual-mode ingestion layer. The backend (FastAPI) implements a unified processing workflow that handles both (1) raw text input for quick snippets and (2) complex PDF parsing using PyPDF for full documents. Data is normalized before passing through an intelligent context window manager, which optimizes token usage for the LLM. The core inference engine integrates with Groq\'s LPU (Language Processing Unit) cloud to run llama-3.3-70b-versatile at near-real-time speeds, delivering structured insights to a "Research-First" Next.js frontend designed to reduce cognitive load.',
-                tech: ['Next.js 14', 'FastAPI', 'Groq Cloud (llama-3.3-70b-versatile)', 'PyPDF', 'Tailwind CSS', 'React Query'],
+                tech: ['Next.js', 'FastAPI', 'Groq Cloud (llama-3.3-70b-versatile)', 'PyPDF', 'Tailwind CSS', 'React Query'],
                 links: {
                     github: 'https://github.com/yourusername/paper-summary-ai',
                     demo: 'https://www.youtube.com/watch?v=demo'
@@ -50,7 +50,7 @@ export default function CategoryPage() {
                 problem: 'In e-commerce, customers often see a product they like but struggle to describe it in words. A shopper might spot a unique lamp in a friend\'s home or a dress in a magazine, but searching "modern gold lamp" returns thousands of irrelevant results. Text-based search creates a discovery barrier—customers abandon searches when they can\'t find the right keywords, and small businesses lose visibility because their products don\'t rank for popular search terms. A boutique furniture store with unique designs gets buried under mass-market retailers, even when they have exactly what the customer wants.',
                 impact: 'For customers, this engine eliminates search frustration—they upload a photo and instantly find similar products across all stores, regardless of how items are tagged. For businesses, especially smaller retailers, it levels the playing field by making products discoverable based on visual features rather than SEO budgets. A small artisan shop selling handcrafted ceramics can now appear alongside major brands when customers search visually, driving traffic to businesses that would otherwise remain hidden.',
                 approach: 'Engineered a full-stack AI-powered visual search platform with Next.js 16 (App Router) and TailwindCSS v4 for a premium, responsive frontend. The backend leverages FastAPI with OpenAI\'s CLIP (ViT-B-32) model via Sentence Transformers for semantic visual understanding—a significant upgrade from ResNet that captures both visual features and contextual meaning. Implemented FAISS (Facebook AI Similarity Search) for efficient vector indexing with 512-dimensional embeddings and cosine similarity. Added category guardrails using zero-shot classification to ensure relevant results, integrated Stripe-style checkout simulation for portfolio demonstration, and designed a modern UI with glassmorphism effects and smooth animations.',
-                tech: ['Next.js 16', 'TailwindCSS v4', 'TypeScript', 'Lucide React', 'FastAPI', 'CLIP (ViT-B-32)', 'Sentence Transformers', 'FAISS', 'Pillow', 'Python'],
+                tech: ['Next.js', 'TailwindCSS', 'TypeScript', 'Lucide React', 'FastAPI', 'CLIP (ViT-B-32)', 'Sentence Transformers', 'FAISS', 'Pillow', 'Python'],
                 links: {
                     github: 'https://github.com/yourusername/image-similarity-search',
                     demo: 'https://www.youtube.com/watch?v=demo'
@@ -58,13 +58,13 @@ export default function CategoryPage() {
             },
             {
                 id: 'resume-tailoring-system',
-                title: 'Resume Optimization Platform',
-                image: '/images/placeholder-ai.png',
+                title: 'Propel: A Resume Optimization tool',
+                image: '/images/p3.png',
                 summary: 'Analyze resumes against job descriptions with data-driven suggestions',
                 problem: 'Job seekers, especially career changers and recent graduates, struggle to position their experience effectively. A software engineer transitioning to product management might have relevant skills but doesn\'t know how to reframe their technical background. Generic resumes fail to pass Applicant Tracking Systems (ATS) and don\'t resonate with hiring managers. Candidates waste hours guessing which skills to emphasize, often missing critical keywords that would make their application stand out. This is particularly challenging for underrepresented groups who may lack access to career coaching or professional networks.',
                 impact: 'This platform democratizes access to resume optimization by providing instant, data-driven feedback. For job seekers, it increases application success rates by identifying exact skill gaps and suggesting specific improvements. For career services at universities, it scales personalized guidance to hundreds of students simultaneously. Early users reported a 40% increase in interview callbacks after implementing the system\'s suggestions.',
-                approach: 'Built a full-stack application using NLP and Machine Learning to parse resumes and job descriptions, calculate semantic similarity scores, identify missing skills, and generate targeted improvement suggestions.',
-                tech: ['NLP', 'Machine Learning', 'Python', 'FastAPI', 'React', 'spaCy'],
+                approach: 'Engineered a full-stack AI-powered resume optimization platform with Next.js (App Router) and React for a modern, performant frontend. Styled with Tailwind CSS 3.4 and enhanced with Framer Motion animations for smooth user interactions. The backend leverages FastAPI with Uvicorn server to handle resume parsing via PyPDF and PDF generation using FPDF. Integrated Groq API running llama-3.3-70b-versatile for intelligent resume analysis, semantic similarity scoring between resumes and job descriptions, skill gap identification, and AI-generated improvement suggestions. The system provides instant, data-driven feedback to help job seekers optimize their applications for ATS systems and hiring managers.',
+                tech: ['Next.js', 'React', 'TailwindCSS', 'Framer Motion', 'Lucide React', 'FastAPI', 'Uvicorn', 'Python', 'FPDF', 'PyPDF', 'Groq API (llama-3.3-70b-versatile)'],
                 links: {
                     github: 'https://github.com/yourusername/resume-tailoring-system',
                     demo: 'https://www.youtube.com/watch?v=demo'
@@ -87,15 +87,32 @@ export default function CategoryPage() {
         ],
         fullstack: [
             {
-                id: 'smart-hire',
-                title: 'Smart Hire Platform',
-                image: '/images/smart-hire.png',
-                summary: 'AI-driven recruitment platform',
-                problem: 'Hiring managers spend countless hours manually screening CVs, often missing qualified candidates due to keyword mismatches. Traditional recruitment is time-consuming and prone to human bias. Qualified candidates are often overlooked because their CVs don\'t contain exact keyword matches, even when they have the right skills.',
-                impact: 'Smart Hire reduces screening time by 70% and increases candidate quality by using intelligent keyword matching. It helps companies find better talent faster while giving candidates a fairer chance.',
-                approach: 'I developed a full-stack platform with a Flask backend and React frontend. The system uses AI algorithms to analyze CVs, extract key skills, and match them against job requirements, providing pre-assessment scores for each candidate.',
-                tech: ['Flask', 'React', 'AI', 'Bootstrap', 'JavaScript'],
-                links: {}
+                id: 'berkshire-hathaway-redesign',
+                title: 'Berkshire Hathaway Redesign',
+                image: '/images/fullstack-2.png',
+                summary: 'Modern, minimalistic redesign of the iconic Berkshire Hathaway website',
+                problem: 'While Berkshire Hathaway is a corporate brand and standard-bearer for trust and business strategy, its original website is famously simple—a static, text-heavy layout with limited responsiveness or visual design. While it reflects Warren Buffett\'s philosophy of substance over style, it doesn\'t align with current user experience standards, especially on mobile. The challenge was to retain the brand\'s professionalism and trust while enhancing usability, accessibility, and visual clarity for today\'s digital audience.',
+                impact: 'This redesign bridges the gap between traditional corporate values and modern web standards. It maintains Berkshire Hathaway\'s reputation for substance while making information more accessible to investors, stakeholders, and the general public. The responsive design ensures seamless access across all devices, improving user engagement and information discovery.',
+                approach: 'Built a full-stack application using React.js (Vite) with Tailwind CSS for a clean, responsive UI. Integrated Node.js backend to handle downloadable reports and PDFs, with MongoDB for data storage. Leveraged AI tools including Adobe Firefly for hero image generation and Design.com for logo creation. The design philosophy focused on minimalism, professionalism, and mobile-first responsiveness while honoring the brand\'s legacy of trust and transparency.',
+                tech: ['React (Vite)', 'Tailwind CSS', 'Node.js', 'MongoDB', 'Adobe Firefly', 'Design.com', 'Vercel'],
+                links: {
+                    github: 'https://github.com/Maxw311nyimbili/FUTURE_FS_03',
+                    demo: 'https://future-fs-03-drab.vercel.app/'
+                }
+            },
+            {
+                id: 'ecommerce-platform',
+                title: 'Mini E-Commerce Platform',
+                image: '/images/fullstack-1.png',
+                summary: 'Full-featured e-commerce platform with product listings, cart, and checkout',
+                problem: 'Small businesses and entrepreneurs need affordable, functional e-commerce solutions without the complexity and cost of enterprise platforms. Traditional e-commerce setups require extensive technical knowledge, expensive hosting, and complicated integrations. There\'s a gap between basic product listings and full-scale platforms—businesses need something in between that\'s easy to deploy, customize, and scale as they grow.',
+                impact: 'This platform democratizes e-commerce by providing a production-ready solution that small businesses can deploy quickly. It includes essential features like dynamic product filtering, shopping cart management, and checkout simulation, all built with modern technologies that ensure fast performance and scalability. The clean UI and responsive design provide a professional shopping experience that builds customer trust.',
+                approach: 'Developed a full-stack e-commerce platform using React.js (Vite) and Tailwind CSS for a responsive, interactive frontend. Implemented React Context API (useContext) for efficient state management across the shopping cart and product catalog. Built a Node.js backend with MongoDB integration for storing and managing product data. Features include dynamic product filtering and search, shopping cart with quantity controls and real-time total calculation, checkout simulation with form validation, and deployment on Vercel for optimal performance.',
+                tech: ['React (Vite)', 'Tailwind CSS', 'Node.js', 'MongoDB', 'React Context API', 'Vercel'],
+                links: {
+                    github: 'https://github.com/Maxw311nyimbili/FUTURE_FS_02',
+                    demo: 'https://future-fs-02-tau.vercel.app/'
+                }
             },
             {
                 id: 'portfolio',
@@ -353,9 +370,15 @@ export default function CategoryPage() {
                                                 </a>
                                             )}
                                             {selectedProject.links.demo && (
-                                                <a href={selectedProject.links.demo} target="_blank" rel="noopener noreferrer" className="action-btn">
-                                                    <i className="fas fa-play-circle"></i> Watch Demo
-                                                </a>
+                                                selectedProject.id === 'portfolio' ? (
+                                                    <button className="action-btn" style={{ cursor: 'default', opacity: 0.7 }}>
+                                                        <i className="fas fa-home"></i> You're Here
+                                                    </button>
+                                                ) : (
+                                                    <a href={selectedProject.links.demo} target="_blank" rel="noopener noreferrer" className="action-btn">
+                                                        <i className={category === 'fullstack' ? 'fas fa-external-link-alt' : 'fas fa-play-circle'}></i> {category === 'fullstack' ? 'Visit Site' : 'Watch Demo'}
+                                                    </a>
+                                                )
                                             )}
                                         </div>
                                     </div>
