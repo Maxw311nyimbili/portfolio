@@ -299,6 +299,38 @@ export default function Home() {
                     </div>
 
                     <div className="timeline compact-timeline">
+                        {/* ProBase Group - Backend Developer Intern */}
+                        <div className="timeline-item" data-aos="fade-up">
+                            <div className="timeline-dot"></div>
+                            <div className="timeline-content card">
+                                <div className="timeline-header">
+                                    <div className="timeline-icon">
+                                        <i className="fas fa-server"></i>
+                                    </div>
+                                    <div className="timeline-meta">
+                                        <h3>Backend Developer Intern</h3>
+                                        <h4>ProBase Group</h4>
+                                        <span className="timeline-date">July 2025 - August 2025</span>
+                                    </div>
+                                </div>
+                                <div className="card-body">
+                                    <ul className="timeline-details">
+                                        <li>Built and optimized 5+ backend services in Go, cutting API response times by approximately 20%.</li>
+                                        <li>Designed scalable REST APIs supporting hundreds of daily pilot transactions.</li>
+                                        <li>Applied clean architecture principles, improving code maintainability and reducing bug resolution time by approximately 15%.</li>
+                                        <li>Partnered with cross-functional teams to deliver production-ready features under tight deadlines.</li>
+                                    </ul>
+                                    <div className="skill-tags">
+                                        <span>Go</span>
+                                        <span>REST APIs</span>
+                                        <span>Clean Architecture</span>
+                                        <span>Backend Development</span>
+                                        <span>Performance Optimization</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         {/* Future Interns */}
                         <div className="timeline-item" data-aos="fade-up">
                             <div className="timeline-dot"></div>
@@ -310,24 +342,24 @@ export default function Home() {
                                     <div className="timeline-meta">
                                         <h3>Full Stack Web Development Intern</h3>
                                         <h4>Future Interns</h4>
-                                        <span className="timeline-date">Present</span>
+                                        <span className="timeline-date">June 2025</span>
                                     </div>
                                 </div>
                                 <div className="card-body">
                                     <ul className="timeline-details">
-                                        <li>Built a personal portfolio using Flask, MySQL, HTML/CSS/JavaScript featuring an interactive resume, SEO, and contact form with email notifications.</li>
-                                        <li>Developing a mini e-commerce platform with product filtering, shopping cart, and checkout simulation using React, Tailwind CSS, and Firebase.</li>
-                                        <li>Redesigning a real-world brand website using AI tools like Durable and Adobe Firefly, with a modern UI in Next.js and CMS integration via Strapi.</li>
+                                        <li>Developed a Flask/Bootstrap portfolio site, improving recruiter response rate by approximately 30%.</li>
+                                        <li>Created a React/Node.js mini e-commerce app supporting CRUD for 50+ products and 30+ test users.</li>
+                                        <li>Led a website rebrand for Berkshire, achieving a 40% faster load time and 100% mobile responsiveness across devices.</li>
+                                        <li>Integrated MongoDB storage to manage 80+ PDF reports for the Berkshire team.</li>
                                     </ul>
                                     <div className="skill-tags">
                                         <span>Flask</span>
-                                        <span>MySQL</span>
-                                        <span>React.js</span>
                                         <span>Bootstrap</span>
-                                        <span>Firebase</span>
-                                        <span>Next.js</span>
-                                        <span>Strapi</span>
-                                        <span>AI Tools</span>
+                                        <span>React</span>
+                                        <span>Node.js</span>
+                                        <span>MongoDB</span>
+                                        <span>CRUD Operations</span>
+                                        <span>Performance Optimization</span>
                                     </div>
                                 </div>
                             </div>
@@ -362,33 +394,6 @@ export default function Home() {
                             </div>
                         </div>
 
-                        {/* PwC */}
-                        <div className="timeline-item" data-aos="fade-up">
-                            <div className="timeline-dot"></div>
-                            <div className="timeline-content card">
-                                <div className="timeline-header">
-                                    <div className="timeline-icon">
-                                        <i className="fas fa-chart-line"></i>
-                                    </div>
-                                    <div className="timeline-meta">
-                                        <h3>Auditor Intern</h3>
-                                        <h4>PricewaterhouseCoopers (PwC) Zambia</h4>
-                                        <span className="timeline-date">Jan - May 2022</span>
-                                    </div>
-                                </div>
-                                <div className="card-body">
-                                    <ul className="timeline-details">
-                                        <li>Conducted internal control over financial reporting (ICOFR) audits, ensuring 100% compliance with international standards.</li>
-                                        <li>Analyzed operating expenses (OPEX), identifying cost-saving opportunities that reduced expenses by 10%.</li>
-                                    </ul>
-                                    <div className="skill-tags">
-                                        <span>Auditing</span>
-                                        <span>Financial Analysis</span>
-                                        <span>Reporting</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </section>
@@ -527,88 +532,62 @@ export default function Home() {
                     </div>
 
                     <div className="row g-4">
-                        {/* Nkani */}
+                        {/* Vantage FotoFinder */}
                         <div className="col-md-6 col-lg-4" data-aos="fade-up">
                             <div className="project-card">
                                 <div className="project-image">
-                                    <img src="/images/nkani.png" alt="Nkani News Aggregator" width="600" height="400" />
+                                    <img src="/images/p2.png" alt="Vantage FotoFinder" width="600" height="400" />
                                 </div>
                                 <div className="project-body">
-                                    <h3 className="project-title">Nkani News Aggregator</h3>
-                                    <p className="project-description">A Flask web application that scrapes Google News and provides sentiment analysis on articles using NLP.</p>
-                                    <div className="tech-stack">
-                                        <span className="tech-badge">Flask</span>
-                                        <span className="tech-badge">NLP</span>
-                                        <span className="tech-badge">Web Scraping</span>
-                                        <span className="tech-badge">Python</span>
-                                    </div>
+                                    <h3 className="project-title">Vantage FotoFinder</h3>
+                                    <p className="project-description">AI-powered visual product discovery engine using CLIP and FAISS for semantic image search. Upload a photo and find visually similar products instantly.</p>
                                     <div className="project-footer">
                                         <div className="project-links">
-                                            <a href="https://github.com/Maxw311nyimbili/nkani_aggregator" target="_blank" rel="noopener noreferrer" className="project-link">
-                                                <i className="fab fa-github"></i>
-                                                <span>Code</span>
-                                            </a>
-                                            <a href="https://www.youtube.com/watch?v=53Kua8HQNzE" target="_blank" rel="noopener noreferrer" className="project-link">
-                                                <i className="fab fa-youtube"></i>
-                                                <span>Demo</span>
-                                            </a>
+                                            <Link href="/projects/ai" className="project-link">
+                                                <i className="fas fa-arrow-right"></i>
+                                                <span>View Details</span>
+                                            </Link>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        {/* Events Manager */}
+                        {/* Paper Summary */}
                         <div className="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
                             <div className="project-card">
                                 <div className="project-image">
-                                    <img src="/images/events_manager.png" alt="Events Manager" width="600" height="400" />
+                                    <img src="/images/p1.png" alt="Paper Summary" width="600" height="400" />
                                 </div>
                                 <div className="project-body">
-                                    <h3 className="project-title">Events Manager</h3>
-                                    <p className="project-description">A Java application for scheduling and managing events with an intuitive JavaFX interface and robust backend.</p>
-                                    <div className="tech-stack">
-                                        <span className="tech-badge">Java</span>
-                                        <span className="tech-badge">JavaFX</span>
-                                        <span className="tech-badge">UI Design</span>
-                                        <span className="tech-badge">Desktop App</span>
-                                    </div>
+                                    <h3 className="project-title">Paper Summary</h3>
+                                    <p className="project-description">High-performance research synthesis engine using llama-3.3-70b-versatile. Reduces research time from 45 minutes to under 10 seconds.</p>
                                     <div className="project-footer">
                                         <div className="project-links">
-                                            <a href="https://github.com/Maxw311nyimbili/eventsManager" target="_blank" rel="noopener noreferrer" className="project-link">
-                                                <i className="fab fa-github"></i>
-                                                <span>Code</span>
-                                            </a>
-                                            <a href="https://www.youtube.com/watch?v=X5PeW4KRCQE" target="_blank" rel="noopener noreferrer" className="project-link">
-                                                <i className="fab fa-youtube"></i>
-                                                <span>Demo</span>
-                                            </a>
+                                            <Link href="/projects/ai" className="project-link">
+                                                <i className="fas fa-arrow-right"></i>
+                                                <span>View Details</span>
+                                            </Link>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        {/* Portfolio */}
+                        {/* Mini E-Commerce Platform */}
                         <div className="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
                             <div className="project-card">
                                 <div className="project-image">
-                                    <img src="/images/portfolio.png" alt="Personal Portfolio" width="600" height="400" />
+                                    <img src="/images/fullstack-1.png" alt="Mini E-Commerce Platform" width="600" height="400" />
                                 </div>
                                 <div className="project-body">
-                                    <h3 className="project-title">Personal Portfolio</h3>
-                                    <p className="project-description">A modern, responsive portfolio website built with Next.js showcasing projects, skills, and professional experience.</p>
-                                    <div className="tech-stack">
-                                        <span className="tech-badge">Next.js</span>
-                                        <span className="tech-badge">React</span>
-                                        <span className="tech-badge">CSS3</span>
-                                        <span className="tech-badge">Responsive</span>
-                                    </div>
+                                    <h3 className="project-title">Mini E-Commerce Platform</h3>
+                                    <p className="project-description">Full-featured e-commerce platform with product filtering, shopping cart, and checkout. Built with React, Node.js, and MongoDB.</p>
                                     <div className="project-footer">
                                         <div className="project-links">
-                                            <Link href="/projects" className="project-link">
+                                            <Link href="/projects/fullstack" className="project-link">
                                                 <i className="fas fa-arrow-right"></i>
-                                                <span>Explore</span>
+                                                <span>View Details</span>
                                             </Link>
                                         </div>
                                     </div>

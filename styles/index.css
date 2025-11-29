@@ -742,46 +742,6 @@ html[data-theme="dark"] .soft-skills {
 }
 
 .soft-skill:hover {
-    transform: translateY(-3px);
-    box-shadow: var(--shadow);
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
-}
-
-/* Projects Section */
-.project-card {
-    background-color: white;
-    border-radius: var(--border-radius);
-    overflow: hidden;
-    box-shadow: var(--shadow);
-    height: 100%;
-    transition: var(--transition);
-}
-
-.project-card:hover {
-    transform: translateY(-7px);
-    box-shadow: var(--shadow-lg);
-}
-
-.project-image {
-    position: relative;
-    height: 230px;
-    overflow: hidden;
-}
-
-.project-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s ease;
-}
-
-.project-card:hover .project-image img {
-    transform: scale(1.05);
-}
-
-.project-overlay {
-    position: absolute;
-    top: 0;
     left: 0;
     right: 0;
     bottom: 0;
@@ -2893,4 +2853,8 @@ html[data-theme="dark"] .soft-skills {
 
 .code-variable {
     color: #9CDCFE;
+}
+/* Cyan glow for featured project cards */
+.project-card:hover {
+    box-shadow: 0 20px 40px -5px rgba(116, 240, 237, 0.4), 0 10px 20px -5px rgba(116, 240, 237, 0.3) !important;
 }
