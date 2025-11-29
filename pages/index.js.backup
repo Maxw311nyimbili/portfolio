@@ -1,0 +1,368 @@
+import Layout from '../components/Layout';
+import { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+
+export default function Home() {
+    const [activeCodeTab, setActiveCodeTab] = useState('python');
+    const [activeAboutTab, setActiveAboutTab] = useState('developer');
+    const typewriterRef = useRef(null);
+
+    // Typewriter effect
+    useEffect(() => {
+        const words = ['digital experiences', 'elegant interfaces', 'powerful apps'];
+        let wordIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let timeoutId;
+
+        const type = () => {
+            const currentWord = words[wordIndex];
+            const element = typewriterRef.current;
+
+            if (!element) return;
+
+            if (isDeleting) {
+                element.textContent = currentWord.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                element.textContent = currentWord.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            let delay = isDeleting ? 40 : 80;
+
+            if (!isDeleting && charIndex === currentWord.length) {
+                delay = 1200;
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                wordIndex = (wordIndex + 1) % words.length;
+                delay = 400;
+            }
+
+            timeoutId = setTimeout(type, delay);
+        };
+
+        timeoutId = setTimeout(type, 400);
+        return () => clearTimeout(timeoutId);
+    }, []);
+
+    return (
+        <Layout>
+            {/* Hero Section */}
+            <section className="hero">
+                <div className="container">
+                    <div className="row align-items-center">
+                        {/* LEFT: Code Block */}
+                        <div className="col-lg-6" data-aos="fade-up">
+                            <div className="hero-content">
+                                <div className="code-intro">
+                                    <div className="code-tabs">
+                                        <button
+                                            className={`code-tab ${activeCodeTab === 'python' ? 'active' : ''}`}
+                                            onClick={() => setActiveCodeTab('python')}
+                                        >
+                                            Python
+                                        </button>
+                                        &lt;<span className="code-tag">div</span> <span className="code-attr">class</span>=<span className="code-string">"developer"</span>&gt;
+                                        &lt;<span className="code-tag">h1</span>&gt;Maxwell Nyimbili&lt;/<span className="code-tag">h1</span>&gt;
+                                        &lt;<span className="code-tag">h2</span>&gt;Full Stack Developer&lt;/<span className="code-tag">h2</span>&gt;
+
+                                        &lt;<span className="code-tag">ul</span> <span className="code-attr">class</span>=<span className="code-string">"skills"</span>&gt;
+                                        &lt;<span className="code-tag">li</span>&gt;UI/UX&lt;/<span className="code-tag">li</span>&gt;
+                                        &lt;<span className="code-tag">li</span>&gt;Web Dev&lt;/<span className="code-tag">li</span>&gt;
+                                        &lt;<span className="code-tag">li</span>&gt;Full Stack&lt;/<span className="code-tag">li</span>&gt;
+                                        &lt;/<span className="code-tag">ul</span>&gt;
+
+                                        &lt;<span className="code-tag">div</span>&gt;
+                                        Creating <span className="typewriter" ref={activeCodeTab === 'html' ? typewriterRef : null}></span>
+                                        &lt;/<span className="code-tag">div</span>&gt;
+                                        &lt;/<span className="code-tag">div</span>&gt;</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p className="hero-text">
+                        A multidisciplinary developer combining design aesthetics with technical expertise to build impactful digital products that solve real problems.
+                    </p>
+
+                    <div className="hero-btns">
+                        <Link href="/projects" className="btn btn-primary me-3">Explore Projects</Link>
+                        <Link href="/contact" className="btn btn-outline-primary">Get in Touch</Link>
+                    </div>
+                </div>
+            </div>
+
+            {/* RIGHT: Title & Image */}
+            <div className="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                <h1 className="hero-title">Creative Developer & UI/UX Designer</h1>
+                <br />
+                <div className="hero-visual">
+                    <div className="profile-container">
+                        <Image src="/images/banner-img.png" alt="Maxwell Nyimbili" width={500} height={500} className="profile-img" priority />
+                        <div className="design-element ui-element">
+                            <div className="element-icon"><i className="fas fa-pencil-ruler"></i></div>
+                            <div className="element-label">UI/UX</div>
+                        </div>
+                        <div className="design-element dev-element">
+                            <div className="element-icon"><i className="fas fa-code"></i></div>
+                            <div className="element-label">Development</div>
+                        </div>
+                        <div className="design-element creative-element">
+                            <div className="element-icon"><i className="fas fa-lightbulb"></i></div>
+                            <div className="element-label">Creativity</div>
+                        </div>
+                        <div className="design-element stack-element">
+                            <div className="element-icon"><i className="fas fa-layer-group"></i></div>
+                            <div className="element-label">Full Stack</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+                </div >
+        <div className="hero-decoration">
+            <div className="decoration-line"></div>
+            <div className="decoration-dot"></div>
+        </div>
+            </section >
+
+        {/* About Section */ }
+        < section className = "about section compact-section" >
+            <div className="container">
+                <div className="row">
+                    <div className="col-lg-12 text-center mb-4">
+                        <h2 className="section-title" data-aos="fade-up">About Me</h2>
+                        <p className="section-subtitle" data-aos="fade-up" data-aos-delay="100">A blend of creativity and technical skills</p>
+                    </div>
+                </div>
+
+                <div className="row align-items-center">
+                    <div className="col-lg-6" data-aos="fade-up">
+                        <div className="about-content">
+                            <div className="about-tabs">
+                                <div className="tab-buttons">
+                                    <button
+                                        className={`tab-btn ${activeAboutTab === 'developer' ? 'active' : ''}`}
+                                        onClick={() => setActiveAboutTab('developer')}
+                                    >
+                                        Developer
+                                    </button>
+                                    <button
+                                        className={`tab-btn ${activeAboutTab === 'designer' ? 'active' : ''}`}
+                                        onClick={() => setActiveAboutTab('designer')}
+                                    >
+                                        Designer
+                                    </button>
+                                    <button
+                                        className={`tab-btn ${activeAboutTab === 'person' ? 'active' : ''}`}
+                                        onClick={() => setActiveAboutTab('person')}
+                                    >
+                                        Person
+                                    </button>
+                                </div>
+                                <div className="tab-content">
+                                    <div className={`tab-pane ${activeAboutTab === 'developer' ? 'active' : ''}`} id="developer">
+                                        <p>As a <strong>Full Stack Developer</strong>, I specialize in creating seamless web applications with clean code and efficient architecture. My experience spans Python's Flask for backend development, along with PHP and JavaScript for dynamic frontends.</p>
+                                        <div className="skill-progress">
+                                            <div className="skill-area">
+                                                <span>Frontend</span>
+                                                <div className="progress">
+                                                    <div className="progress-bar" style={{ width: '85%' }}></div>
+                                                </div>
+                                            </div>
+                                            <div className="skill-area">
+                                                <span>Backend</span>
+                                                <div className="progress">
+                                                    <div className="progress-bar" style={{ width: '80%' }}></div>
+                                                </div>
+                                            </div>
+                                            <div className="skill-area">
+                                                <span>Problem Solving</span>
+                                                <div className="progress">
+                                                    <div className="progress-bar" style={{ width: '90%' }}></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className={`tab-pane ${activeAboutTab === 'designer' ? 'active' : ''}`} id="designer">
+                                        <p>I approach <strong>UI/UX Design</strong> with a user-centric mindset, creating intuitive interfaces that balance aesthetics and functionality. I believe design should not only look good but also solve problems and enhance user experience.</p>
+                                        <div className="skill-progress">
+                                            <div className="skill-area">
+                                                <span>User Research</span>
+                                                <div className="progress">
+                                                    <div className="progress-bar" style={{ width: '75%' }}></div>
+                                                </div>
+                                            </div>
+                                            <div className="skill-area">
+                                                <span>Visual Design</span>
+                                                <div className="progress">
+                                                    <div className="progress-bar" style={{ width: '80%' }}></div>
+                                                </div>
+                                            </div>
+                                            <div className="skill-area">
+                                                <span>Prototyping</span>
+                                                <div className="progress">
+                                                    <div className="progress-bar" style={{ width: '85%' }}></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className={`tab-pane ${activeAboutTab === 'person' ? 'active' : ''}`} id="person">
+                                        <p>Beyond code and design, I'm a <strong>curious learner</strong> who enjoys exploring new technologies and creative approaches. I value innovation, collaboration, and the power of technology to make a positive impact.</p>
+                                        <div className="skill-progress">
+                                            <div className="skill-area">
+                                                <span>Leadership</span>
+                                                <div className="progress">
+                                                    <div className="progress-bar" style={{ width: '85%' }}></div>
+                                                </div>
+                                            </div>
+                                            <div className="skill-area">
+                                                <span>Communication</span>
+                                                <div className="progress">
+                                                    <div className="progress-bar" style={{ width: '80%' }}></div>
+                                                </div>
+                                            </div>
+                                            <div className="skill-area">
+                                                <span>Adaptability</span>
+                                                <div className="progress">
+                                                    <div className="progress-bar" style={{ width: '90%' }}></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                        <div className="about-card">
+                            <div className="card-header">
+                                <i className="fas fa-graduation-cap me-2"></i> Education
+                            </div>
+                            <div className="card-body">
+                                <h4>BSc, Computer Science</h4>
+                                <h5>Ashesi University, Ghana</h5>
+                                <p className="education-date">Expected Graduation: June 2026</p>
+                                <div className="coursework">
+                                    <h6>Relevant Coursework:</h6>
+                                    <div className="course-tags">
+                                        <span>Data Structures & Algorithms</span>
+                                        <span>Database Systems</span>
+                                        <span>Intro to AI</span>
+                                        <span>Calculus</span>
+                                        <span>Linear Algebra</span>
+                                        <span>Statistics</span>
+                                        <span>Discrete Structures</span>
+                                        <span>Leadership</span>
+                                        <span>Economics</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </section >
+
+        {/* Featured Projects Section */ }
+        < section className = "section bg-light" >
+            <div className="container">
+                <div className="row">
+                    <div className="col-lg-12 text-center mb-5">
+                        <h2 className="section-title" data-aos="fade-up">Featured Projects</h2>
+                        <p className="section-subtitle" data-aos="fade-up" data-aos-delay="100">Creative and functional solutions</p>
+                    </div>
+                </div>
+
+                <div className="row g-4">
+                    {/* Nkani */}
+                    <div className="col-md-6 col-lg-4" data-aos="fade-up">
+                        <div className="project-card">
+                            <div className="project-image">
+                                <Image src="/images/nkani.png" alt="Nkani" width={600} height={400} />
+                                <div className="project-overlay">
+                                    <a href="https://github.com/Maxw311nyimbili/nkani_aggregator" target="_blank" rel="noopener noreferrer" className="project-link">
+                                        <i className="fab fa-github"></i>
+                                    </a>
+                                    <a href="https://www.youtube.com/watch?v=53Kua8HQNzE" target="_blank" rel="noopener noreferrer" className="project-link">
+                                        <i className="fab fa-youtube"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div className="project-info">
+                                <h3>Nkani-News Aggregator</h3>
+                                <p>A Flask web application that scrapes Google News and provides sentiment analysis on articles.</p>
+                                <div className="project-tags">
+                                    <span>Flask</span>
+                                    <span>NLP</span>
+                                    <span>Scraping</span>
+                                </div>
+                                <Link href="/projects#nkani" className="project-more">Learn More <i className="fas fa-arrow-right"></i></Link>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Events Manager */}
+                    <div className="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                        <div className="project-card">
+                            <div className="project-image">
+                                <Image src="/images/events_manager.png" alt="Events Manager" width={600} height={400} />
+                                <div className="project-overlay">
+                                    <a href="https://github.com/Maxw311nyimbili/eventsManager" target="_blank" rel="noopener noreferrer" className="project-link">
+                                        <i className="fab fa-github"></i>
+                                    </a>
+                                    <a href="https://www.youtube.com/watch?v=X5PeW4KRCQE" target="_blank" rel="noopener noreferrer" className="project-link">
+                                        <i className="fab fa-youtube"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div className="project-info">
+                                <h3>Events Manager</h3>
+                                <p>A Java application for scheduling and managing events with a clean user interface.</p>
+                                <div className="project-tags">
+                                    <span>Java</span>
+                                    <span>JavaFX</span>
+                                    <span>UI Design</span>
+                                </div>
+                                <Link href="/projects#events-manager" className="project-more">Learn More <i className="fas fa-arrow-right"></i></Link>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Portfolio */}
+                    <div className="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                        <div className="project-card">
+                            <div className="project-image">
+                                <Image src="/images/portfolio.png" alt="Portfolio" width={600} height={400} />
+                                <div className="project-overlay">
+                                    <a href="#" className="project-link">
+                                        <i className="fab fa-github"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div className="project-info">
+                                <h3>Personal Portfolio</h3>
+                                <p>A responsive portfolio website showcasing my skills and projects.</p>
+                                <div className="project-tags">
+                                    <span>Next.js</span>
+                                    <span>Tailwind</span>
+                                    <span>React</span>
+                                </div>
+                                <Link href="/projects#portfolio" className="project-more">Learn More <i className="fas fa-arrow-right"></i></Link>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="row mt-5">
+                    <div className="col-lg-12 text-center" data-aos="fade-up">
+                        <Link href="/projects" className="btn btn-outline-primary">View All Projects</Link>
+                    </div>
+                </div>
+            </div>
+            </section >
+        </Layout >
+    );
+}

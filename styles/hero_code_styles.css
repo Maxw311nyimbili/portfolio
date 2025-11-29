@@ -1,0 +1,126 @@
+﻿/* Code Intro Styling */
+.code-intro {
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-md);
+    margin-bottom: 2rem;
+    overflow: hidden;
+    max-width: 550px;
+}
+
+.code-tabs {
+    display: flex;
+    background-color: var(--gray-100);
+    border-bottom: 1px solid var(--border);
+    padding: 0.5rem 0.5rem 0;
+}
+
+.code-tab {
+    padding: 0.5rem 1rem;
+    margin-right: 0.25rem;
+    border-radius: 4px 4px 0 0;
+    background-color: var(--gray-200);
+    border: 1px solid var(--border);
+    border-bottom: none;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-light);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.code-tab.active {
+    background-color: var(--card-bg);
+    color: var(--primary);
+    position: relative;
+    top: 1px;
+}
+
+.code-tab:hover:not(.active) {
+    background-color: var(--gray-300);
+    color: var(--text);
+}
+
+.code-panel {
+    position: relative;
+    overflow-x: auto;
+    max-height: 400px;
+}
+
+.code-block {
+    display: none;
+    padding: 0;
+    margin: 0;
+}
+
+.code-block.active {
+    display: block;
+}
+
+.code-block pre {
+    margin: 0;
+    padding: 0;
+}
+
+.code-block code {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    display: block;
+    padding: 1.5rem;
+    white-space: pre;
+    background-color: var(--card-bg);
+    color: var(--text);
+}
+
+/* Syntax Highlighting */
+.code-comment {
+    color: #6c7a89;
+    font-style: italic;
+}
+
+.code-keyword {
+    color: #ff6b6b;
+    font-weight: 500;
+}
+
+.code-string {
+    color: #10ac84;
+}
+
+.code-function {
+    color: #54a0ff;
+}
+
+.code-class {
+    color: #5352ed;
+    font-weight: 500;
+}
+
+.code-param {
+    color: #f7b731;
+    font-style: italic;
+}
+
+.code-tag {
+    color: #e84393;
+}
+
+.code-attr {
+    color: #00d2d3;
+}
+
+/* Dark Mode Adjustments */
+[data-theme="dark"] .code-tabs {
+    background-color: var(--gray-800);
+}
+
+[data-theme="dark"] .code-tab {
+    background-color: var(--gray-700);
+    border-color: var(--gray-600);
+}
+
+[data-theme="dark"] .code-tab.active {
+    background-color: var(--card-bg);
+}
