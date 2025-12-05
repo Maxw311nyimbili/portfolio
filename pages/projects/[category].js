@@ -24,7 +24,8 @@ export default function CategoryPage() {
                 approach: 'I built a web application using Flask that scrapes Google News in real-time. Using natural language processing (specifically VADER sentiment analysis), the system automatically analyzes each article\'s emotional tone and presents it alongside the headline.',
                 tech: ['Flask', 'NLP', 'VADER', 'Python', 'Beautiful Soup'],
                 links: {
-                    github: 'https://github.com/Maxw311nyimbili/nkani_aggregator',
+                    frontend: '<your-frontend-repo-link-here>',
+                    backend: 'https://github.com/Maxw311nyimbili/nkani_aggregator',
                     demo: 'https://www.youtube.com/watch?v=53Kua8HQNzE'
                 }
             },
@@ -38,8 +39,9 @@ export default function CategoryPage() {
                 approach: 'Engineered a low-latency, full-stack inference pipeline with a dual-mode ingestion layer. The backend (FastAPI) implements a unified processing workflow that handles both (1) raw text input for quick snippets and (2) complex PDF parsing using PyPDF for full documents. Data is normalized before passing through an intelligent context window manager, which optimizes token usage for the LLM. The core inference engine integrates with Groq\'s LPU (Language Processing Unit) cloud to run llama-3.3-70b-versatile at near-real-time speeds, delivering structured insights to a "Research-First" Next.js frontend designed to reduce cognitive load.',
                 tech: ['Next.js', 'FastAPI', 'Groq Cloud (llama-3.3-70b-versatile)', 'PyPDF', 'Tailwind CSS', 'React Query'],
                 links: {
-                    github: 'https://github.com/yourusername/paper-summary-ai',
-                    demo: 'https://www.youtube.com/watch?v=demo'
+                    frontend: 'https://github.com/Maxw311nyimbili/paper_summary_frontend',
+                    backend: 'https://github.com/Maxw311nyimbili/paper_summary_backend',
+                    demo: 'https://www.youtube.com/watch?v=zyi6xoJZgD0'
                 }
             },
             {
@@ -52,8 +54,9 @@ export default function CategoryPage() {
                 approach: 'Engineered a full-stack AI-powered visual search platform with Next.js 16 (App Router) and TailwindCSS v4 for a premium, responsive frontend. The backend leverages FastAPI with OpenAI\'s CLIP (ViT-B-32) model via Sentence Transformers for semantic visual understanding—a significant upgrade from ResNet that captures both visual features and contextual meaning. Implemented FAISS (Facebook AI Similarity Search) for efficient vector indexing with 512-dimensional embeddings and cosine similarity. Added category guardrails using zero-shot classification to ensure relevant results, integrated Stripe-style checkout simulation for portfolio demonstration, and designed a modern UI with glassmorphism effects and smooth animations.',
                 tech: ['Next.js', 'TailwindCSS', 'TypeScript', 'Lucide React', 'FastAPI', 'CLIP (ViT-B-32)', 'Sentence Transformers', 'FAISS', 'Pillow', 'Python'],
                 links: {
-                    github: 'https://github.com/yourusername/image-similarity-search',
-                    demo: 'https://www.youtube.com/watch?v=demo'
+                    frontend: 'https://github.com/Maxw311nyimbili/FotoFinder_frontend',
+                    backend: 'https://github.com/Maxw311nyimbili/FotoFinder_backend',
+                    demo: 'https://www.youtube.com/watch?v=t6d57bdfEdI'
                 }
             },
             {
@@ -66,24 +69,28 @@ export default function CategoryPage() {
                 approach: 'Engineered a full-stack AI-powered resume optimization platform with Next.js (App Router) and React for a modern, performant frontend. Styled with Tailwind CSS 3.4 and enhanced with Framer Motion animations for smooth user interactions. The backend leverages FastAPI with Uvicorn server to handle resume parsing via PyPDF and PDF generation using FPDF. Integrated Groq API running llama-3.3-70b-versatile for intelligent resume analysis, semantic similarity scoring between resumes and job descriptions, skill gap identification, and AI-generated improvement suggestions. The system provides instant, data-driven feedback to help job seekers optimize their applications for ATS systems and hiring managers.',
                 tech: ['Next.js', 'React', 'TailwindCSS', 'Framer Motion', 'Lucide React', 'FastAPI', 'Uvicorn', 'Python', 'FPDF', 'PyPDF', 'Groq API (llama-3.3-70b-versatile)'],
                 links: {
-                    github: 'https://github.com/yourusername/resume-tailoring-system',
-                    demo: 'https://www.youtube.com/watch?v=demo'
+                    frontend: 'https://github.com/Maxw311nyimbili/propel_app_frontend',
+                    backend: 'https://github.com/Maxw311nyimbili/propel_app_backend',
+                    demo: 'https://www.youtube.com/watch?v=udZ7bsnvw1M'
                 }
             },
             {
-                id: 'email-risk-analyzer',
-                title: 'Email Security Analyzer',
-                image: '/images/placeholder-ai.png',
-                summary: 'Detect phishing attempts and explain security risks in plain language',
-                problem: 'Phishing attacks cost businesses billions annually, yet most employees lack the training to identify sophisticated scams. A finance team member might receive a convincing invoice from what appears to be a trusted vendor, leading to wire fraud. Traditional email security tools either block everything (creating false positives that frustrate users) or provide vague warnings without context. Employees need to understand why an email is suspicious so they can develop better security instincts over time. Small businesses, in particular, lack dedicated security teams to provide this education.',
-                impact: 'This analyzer empowers users to become their own first line of defense by explaining security risks in accessible language. For businesses, it reduces successful phishing attacks by educating employees in real-time rather than through quarterly training sessions. For individuals, especially seniors and non-technical users, it provides confidence in digital communication by demystifying potential threats.',
-                approach: 'Created a minimal, professional cybersecurity tool using Machine Learning to classify emails as safe or risky. The system analyzes email content, sender information, and links to identify phishing indicators and generate risk explanations.',
-                tech: ['Machine Learning', 'NLP', 'Python', 'FastAPI', 'Next.js', 'TailwindCSS'],
+                id: 'voyage-ai-travel-planner',
+                title: 'Voyage',
+                image: '/images/p4.png',
+                summary: 'AI-powered travel itinerary generator with interactive maps and PDF export',
+                problem: 'Planning a trip is often a fragmented and overwhelming process, requiring travelers to juggle multiple tabs for research, mapping, and scheduling. This leads to decision fatigue and inefficient itineraries. Existing tools are either too generic or require manual input for every single detail, making it difficult to create a personalized travel plan quickly.',
+                impact: 'Voyage transforms hours of research into a seamless, instant experience. By generating personalized, day-by-day itineraries complete with interactive maps, it empowers travelers to explore new destinations with confidence. The PDF export feature ensures that users have their plans accessible offline, making it a practical companion for any trip.',
+                approach: 'Built a modern full-stack application using Next.js for a responsive frontend and FastAPI for the backend. Integrated the Groq API (Llama 3.3) to generate context-aware, detailed itineraries based on user preferences. Implemented Leaflet for interactive mapping to visualize activities and ReportLab for dynamic, downloadable PDF generation.',
+                tech: ['Next.js', 'React', 'TailwindCSS', 'Python', 'FastAPI', 'Groq API', 'Leaflet', 'ReportLab'],
                 links: {
-                    github: 'https://github.com/yourusername/email-risk-analyzer',
-                    demo: 'https://www.youtube.com/watch?v=demo'
+                    frontend: 'https://github.com/Maxw311nyimbili/voyage_frontend',
+                    backend: 'https://github.com/Maxw311nyimbili/voyage_backend',
+                    demo: 'https://www.youtube.com/watch?v=ssqeRswHezE'
                 }
             }
+
+
         ],
         fullstack: [
             {
@@ -367,6 +374,16 @@ export default function CategoryPage() {
                                             {selectedProject.links.github && (
                                                 <a href={selectedProject.links.github} target="_blank" rel="noopener noreferrer" className="action-btn">
                                                     <i className="fab fa-github"></i> View Source Code
+                                                </a>
+                                            )}
+                                            {selectedProject.links.frontend && (
+                                                <a href={selectedProject.links.frontend} target="_blank" rel="noopener noreferrer" className="action-btn">
+                                                    <i className="fab fa-github"></i> Frontend Code
+                                                </a>
+                                            )}
+                                            {selectedProject.links.backend && (
+                                                <a href={selectedProject.links.backend} target="_blank" rel="noopener noreferrer" className="action-btn">
+                                                    <i className="fab fa-github"></i> Backend Code
                                                 </a>
                                             )}
                                             {selectedProject.links.demo && (

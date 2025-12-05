@@ -2652,6 +2652,7 @@ html[data-theme="dark"] .soft-skills {
     border: 1px solid rgba(10, 61, 98, 0.2);
     border-radius: 8px;
     color: var(--text);
+
     font-size: 0.9rem;
     font-weight: 600;
     transition: all 0.3s ease;
@@ -2707,7 +2708,8 @@ html[data-theme="dark"] .soft-skills {
 
 .visual-actions {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
     gap: 0.75rem;
 }
 
@@ -2854,6 +2856,7 @@ html[data-theme="dark"] .soft-skills {
 .code-variable {
     color: #9CDCFE;
 }
+
 /* Cyan glow for featured project cards */
 .project-card:hover {
     box-shadow: 0 20px 40px -5px rgba(116, 240, 237, 0.4), 0 10px 20px -5px rgba(116, 240, 237, 0.3) !important;
