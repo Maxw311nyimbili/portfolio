@@ -1049,6 +1049,22 @@ html[data-theme="dark"] .soft-skills {
         font-size: 2.2rem;
     }
 
+    /* Add proper spacing for hero buttons on mobile */
+    .hero-btns {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        width: 100%;
+    }
+
+    .hero-btns .btn,
+    .hero-btns a {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+        margin: 0 !important;
+    }
+
     .tab-buttons {
         flex-direction: column;
     }
@@ -1147,6 +1163,20 @@ html[data-theme="dark"] .soft-skills {
     /* Add better spacing between sections */
     .compact-section {
         padding: 3rem 0;
+    }
+
+    /* Add spacing for CTA buttons */
+    .cta-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        width: 100%;
+    }
+
+    .cta-buttons .btn {
+        width: 100%;
+        text-align: center;
+        margin: 0 !important;
     }
 }
 
@@ -2888,7 +2918,9 @@ html[data-theme="dark"] .soft-skills {
 /* Cyan glow for featured project cards */
 .project-card:hover {
     box-shadow: 0 20px 40px -5px rgba(116, 240, 237, 0.4), 0 10px 20px -5px rgba(116, 240, 237, 0.3) !important;
-}/* Skills Card Container - Added Fix */
+}
+
+/* Skills Card Container - Added Fix */
 .skills-tabs {
     background-color: var(--card-bg);
     border-radius: var(--border-radius);
@@ -2902,6 +2934,7 @@ html[data-theme="dark"] .soft-skills {
     border-bottom: 1px solid var(--border);
     margin-bottom: 0;
 }
+
 /* Skills Content Padding Fix */
 .skills-content {
     padding: 1.5rem;
@@ -2910,6 +2943,7 @@ html[data-theme="dark"] .soft-skills {
 .skills-content {
     min-height: 300px;
 }
+
 /* Enhanced Modal Responsiveness Fixes */
 
 /* Tablet and below - Stack content vertically earlier */
@@ -3062,6 +3096,7 @@ html[data-theme="dark"] .soft-skills {
         height: 32px;
     }
 }
+
 /* Fix action button width to prevent text overflow */
 .action-btn {
     white-space: nowrap;
@@ -3085,6 +3120,7 @@ html[data-theme="dark"] .soft-skills {
         width: 100%;
     }
 }
+
 /* CHECKPOINT 7 - Removing pulsing background blobs */
 
 /* Disable pulsing background elements on index hero */
@@ -3094,6 +3130,7 @@ html[data-theme="dark"] .soft-skills {
 [data-theme="dark"] .hero::before {
     display: none !important;
 }
+
 /* Dark mode: Use dark blue (#0A3D62) for Process and Experience icons/numbers */
 
 /* My Process section - Dark mode */
@@ -3111,6 +3148,7 @@ html[data-theme="dark"] .soft-skills {
     background: #0A3D62 !important;
     color: white !important;
 }
+
 /* Dark mode: Keep cyan circles but make icons/numbers dark like the card background */
 
 /* My Process section - Dark mode: dark icons/numbers, cyan circle */
@@ -3129,6 +3167,7 @@ html[data-theme="dark"] .soft-skills {
     background: linear-gradient(135deg, var(--primary-light), var(--primary)) !important;
     color: #1a1a1a !important;
 }
+
 /* Enhanced Hero Button Styling for Index Page */
 
 /* Primary button (Explore Projects) */
@@ -3204,6 +3243,7 @@ html[data-theme="dark"] .soft-skills {
     opacity: 1 !important;
     visibility: visible !important;
 }
+
 /* Fix theme toggle icon color - moon should not be black */
 [data-theme="light"] .theme-toggle i,
 [data-theme="light"] .theme-toggle svg {
@@ -3246,6 +3286,7 @@ html[data-theme="dark"] .soft-skills {
         padding: 3rem 0 2rem !important;
     }
 }
+
 /* Make theme toggle icon white in both light and dark modes */
 .theme-toggle i,
 .theme-toggle svg,

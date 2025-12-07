@@ -994,3 +994,11 @@ button,
     transform: translateY(-3px) scale(1.05) !important;
     box-shadow: 0 12px 35px rgba(116, 240, 237, 0.6) !important;
 }
+
+/* Mobile button text centering */
+@media (max-width: 768px) {
+    .btn, .btn-primary, .btn-outline-primary, a.btn {
+        text-align: center !important;
+        justify-content: center !important;
+    }
+}

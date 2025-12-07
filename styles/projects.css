@@ -838,6 +838,20 @@
     font-size: 2rem;
   }
 
+  /* Add proper spacing for hero buttons on mobile */
+  .hero div[style*="display: flex"],
+  .projects-page .hero div[style*="display: flex"] {
+    flex-direction: column !important;
+    gap: 1rem !important;
+  }
+
+  .hero .btn,
+  .projects-page .hero .btn {
+    width: 100%;
+    text-align: center;
+    margin: 0 !important;
+  }
+
   .project-card {
     height: auto;
     min-height: 420px;
@@ -1110,38 +1124,41 @@
 :root {
   --primary-rgb: 79, 70, 229;
   --secondary-rgb: 236, 72, 153;
-}/* Remove pulsing background blobs from projects hero */
+}
+
+/* Remove pulsing background blobs from projects hero */
 .projects-hero::after,
 .projects-hero::before {
-    display: none !important;
+  display: none !important;
 }
+
 /* Improved "Get in Touch" button on projects page */
 
 /* Better layout and styling */
 .projects-page .btn-primary,
 .projects-page .cta-btn {
-    font-family: 'Space Grotesk', sans-serif !important;
-    font-weight: 600 !important;
-    font-size: 1.1rem !important;
-    padding: 0.875rem 2rem !important;
-    background: linear-gradient(135deg, var(--primary), var(--secondary)) !important;
-    border: none !important;
-    border-radius: 12px !important;
-    color: white !important;
-    transition: all 0.3s ease !important;
-    box-shadow: 0 8px 20px rgba(116, 240, 237, 0.4) !important;
-    cursor: pointer !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    gap: 0.5rem !important;
+  font-family: 'Space Grotesk', sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 1.1rem !important;
+  padding: 0.875rem 2rem !important;
+  background: linear-gradient(135deg, var(--primary), var(--secondary)) !important;
+  border: none !important;
+  border-radius: 12px !important;
+  color: white !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 8px 20px rgba(116, 240, 237, 0.4) !important;
+  cursor: pointer !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
 }
 
 /* Enhanced hover effect */
 .projects-page .btn-primary:hover,
 .projects-page .cta-btn:hover {
-    transform: translateY(-3px) !important;
-    box-shadow: 0 12px 30px rgba(116, 240, 237, 0.6) !important;
-    background: linear-gradient(135deg, var(--secondary), var(--primary)) !important;
+  transform: translateY(-3px) !important;
+  box-shadow: 0 12px 30px rgba(116, 240, 237, 0.6) !important;
+  background: linear-gradient(135deg, var(--secondary), var(--primary)) !important;
 }
 
 /* Custom cursor for interactive elements */
@@ -1150,12 +1167,12 @@
 .btn,
 .nav-link,
 a {
-    cursor: pointer !important;
+  cursor: pointer !important;
 }
 
 /* Pointer cursor for clickable items */
 button,
 .clickable,
 [role="button"] {
-    cursor: pointer !important;
+  cursor: pointer !important;
 }
