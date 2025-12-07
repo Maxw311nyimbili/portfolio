@@ -319,7 +319,7 @@
 }
 
 .about-card {
-    background-color: white;
+    background-color: var(--card-bg);
     border-radius: var(--border-radius);
     overflow: hidden;
     box-shadow: var(--shadow);
@@ -379,6 +379,21 @@
     position: relative;
     margin: 2rem auto;
     max-width: 1000px;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 7px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--gray-200);
+    z-index: 0;
+}
+
+[data-theme="dark"] .timeline::before {
+    background: var(--gray-700);
 }
 
 .timeline-item {
@@ -467,6 +482,8 @@
     padding-left: 1.5rem;
     margin-bottom: 0.75rem;
     font-size: 0.95rem;
+    color: var(--text);
+    /* Ensure readable text in dark mode */
 }
 
 .timeline-details li::before {
@@ -678,7 +695,7 @@ html[data-theme="dark"] .skill-bar {
     display: none;
     opacity: 0;
     transition: opacity 0.3s ease;
-    position: absolute;
+    /* position: absolute; */
     width: 100%;
     top: 0;
     left: 0;
@@ -792,6 +809,10 @@ html[data-theme="dark"] .soft-skills {
     color: var(--text-light);
     margin-bottom: 1.25rem;
     font-size: 0.95rem;
+}
+
+[data-theme="dark"] .project-body p {
+    color: var(--text);
 }
 
 .project-tech {
@@ -1087,11 +1108,10 @@ html[data-theme="dark"] .soft-skills {
         margin-bottom: 0.4rem;
     }
 
-    .project-body p {
-        font-size: 0.9rem;
-        margin-bottom: 0.8rem;
-        line-height: 1.4;
+    [data-theme="dark"] .project-body p {
+        color: var(--text);
     }
+
 
     /* Make tech tags smaller and more compact */
     .project-tech {
@@ -1176,9 +1196,10 @@ html[data-theme="dark"] .soft-skills {
         font-size: 1.1rem;
     }
 
-    .project-body p {
-        font-size: 0.85rem;
+    [data-theme="dark"] .project-body p {
+        color: var(--text);
     }
+
 
     .project-tech span {
         padding: 3px 8px;
@@ -1782,6 +1803,9 @@ html[data-theme="dark"] .soft-skills {
     transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
     border: 1px solid rgba(10, 61, 98, 0.15) !important;
     box-shadow: 0 8px 32px rgba(10, 61, 98, 0.1) !important;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 /* Hover Effects */
@@ -1832,6 +1856,9 @@ html[data-theme="dark"] .soft-skills {
 
 /* Card Body */
 .project-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
     padding: 1.5rem;
 }
 
@@ -1886,6 +1913,7 @@ html[data-theme="dark"] .soft-skills {
 
 /* Project Footer */
 .project-footer {
+    margin-top: auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -2844,7 +2872,7 @@ html[data-theme="dark"] .soft-skills {
     font-style: italic;
 }
 
-[data-theme="dark"] .code-comment {
+[data-theme='dark'] .code-comment {
     color: #6A9955;
 }
 
@@ -2860,4 +2888,371 @@ html[data-theme="dark"] .soft-skills {
 /* Cyan glow for featured project cards */
 .project-card:hover {
     box-shadow: 0 20px 40px -5px rgba(116, 240, 237, 0.4), 0 10px 20px -5px rgba(116, 240, 237, 0.3) !important;
+}/* Skills Card Container - Added Fix */
+.skills-tabs {
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    margin-bottom: 2rem;
+}
+
+.skills-nav {
+    background-color: var(--gray-100);
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 0;
+}
+/* Skills Content Padding Fix */
+.skills-content {
+    padding: 1.5rem;
+}
+
+.skills-content {
+    min-height: 300px;
+}
+/* Enhanced Modal Responsiveness Fixes */
+
+/* Tablet and below - Stack content vertically earlier */
+@media (max-width: 992px) {
+    .modal-container {
+        height: 90vh;
+        max-height: none;
+    }
+
+    .modal-text-panel {
+        padding: 1.5rem;
+    }
+
+    .content-section h3 {
+        font-size: 1.3rem;
+    }
+
+    .content-section p {
+        font-size: 1rem;
+    }
+}
+
+/* Mobile - Full screen modal with optimized spacing */
+@media (max-width: 768px) {
+    .project-modal-backdrop {
+        padding: 0;
+        align-items: flex-start;
+    }
+
+    .project-modal {
+        border-radius: 0;
+        max-width: 100%;
+        height: 100vh;
+        max-height: 100vh;
+    }
+
+    .modal-container {
+        height: 100vh;
+        max-height: 100vh;
+    }
+
+    .modal-header {
+        padding: 1rem 1.5rem;
+    }
+
+    .modal-title {
+        font-size: 1.2rem;
+    }
+
+    .modal-category {
+        font-size: 0.8rem;
+    }
+
+    .modal-tab {
+        padding: 0.75rem 1rem;
+        font-size: 0.85rem;
+    }
+
+    .modal-text-panel {
+        padding: 1.25rem;
+    }
+
+    .content-section h3 {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+    }
+
+    .content-section p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    .visual-content {
+        padding: 1rem;
+    }
+
+    .action-btn {
+        padding: 0.75rem 1.25rem;
+        font-size: 0.9rem;
+        flex: 1;
+        min-width: 0;
+    }
+
+    .visual-actions {
+        flex-direction: column;
+    }
+
+    .tech-badge-large {
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
+    }
+
+    .modal-close {
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
+    }
+}
+
+/* Small mobile - Further optimizations */
+@media (max-width: 576px) {
+    .modal-header {
+        padding: 0.875rem 1rem;
+    }
+
+    .modal-title {
+        font-size: 1.1rem;
+    }
+
+    .modal-tab {
+        padding: 0.65rem 0.85rem;
+        font-size: 0.8rem;
+        gap: 0.35rem;
+    }
+
+    .tab-icon {
+        font-size: 0.9rem;
+    }
+
+    .modal-text-panel {
+        padding: 1rem;
+    }
+
+    .content-section h3 {
+        font-size: 1.1rem;
+    }
+
+    .content-section p {
+        font-size: 0.9rem;
+    }
+
+    .visual-content {
+        padding: 0.875rem;
+    }
+
+    .action-btn {
+        padding: 0.65rem 1rem;
+        font-size: 0.85rem;
+    }
+
+    .tech-badge-large {
+        padding: 0.45rem 0.85rem;
+        font-size: 0.8rem;
+    }
+
+    .modal-close {
+        top: 0.75rem;
+        right: 0.75rem;
+        width: 32px;
+        height: 32px;
+    }
+}
+/* Fix action button width to prevent text overflow */
+.action-btn {
+    white-space: nowrap;
+    min-width: fit-content;
+}
+
+/* Mobile - Allow buttons to take full width */
+@media (max-width: 768px) {
+    .action-btn {
+        width: 100%;
+        white-space: normal;
+        text-align: center;
+    }
+}
+
+/* Small mobile - Ensure buttons don't compress text */
+@media (max-width: 576px) {
+    .action-btn {
+        padding: 0.75rem 1rem;
+        font-size: 0.85rem;
+        width: 100%;
+    }
+}
+/* CHECKPOINT 7 - Removing pulsing background blobs */
+
+/* Disable pulsing background elements on index hero */
+.hero::after,
+.hero::before,
+[data-theme="dark"] .hero::after,
+[data-theme="dark"] .hero::before {
+    display: none !important;
+}
+/* Dark mode: Use dark blue (#0A3D62) for Process and Experience icons/numbers */
+
+/* My Process section - Dark mode */
+[data-theme="dark"] .step-number {
+    background: #0A3D62 !important;
+    color: white !important;
+}
+
+[data-theme="dark"] .step-icon {
+    background: linear-gradient(135deg, #0A3D62, #0e5a8a) !important;
+}
+
+/* Experience section - Dark mode */
+[data-theme="dark"] .timeline-icon {
+    background: #0A3D62 !important;
+    color: white !important;
+}
+/* Dark mode: Keep cyan circles but make icons/numbers dark like the card background */
+
+/* My Process section - Dark mode: dark icons/numbers, cyan circle */
+[data-theme="dark"] .step-number {
+    background: linear-gradient(135deg, var(--primary-light), var(--primary)) !important;
+    color: #1a1a1a !important;
+}
+
+[data-theme="dark"] .step-icon {
+    background: linear-gradient(135deg, var(--primary-light), var(--primary)) !important;
+    color: #1a1a1a !important;
+}
+
+/* Experience section - Dark mode: dark icons, cyan circle */
+[data-theme="dark"] .timeline-icon {
+    background: linear-gradient(135deg, var(--primary-light), var(--primary)) !important;
+    color: #1a1a1a !important;
+}
+/* Enhanced Hero Button Styling for Index Page */
+
+/* Primary button (Explore Projects) */
+.hero .btn-primary,
+.cta-buttons .btn-primary {
+    font-family: 'Space Grotesk', sans-serif !important;
+    font-weight: 600 !important;
+    font-size: 1.1rem !important;
+    padding: 0.875rem 2rem !important;
+    background: linear-gradient(135deg, var(--primary), var(--secondary)) !important;
+    border: none !important;
+    border-radius: 12px !important;
+    color: white !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 8px 20px rgba(116, 240, 237, 0.4) !important;
+    text-transform: none !important;
+    letter-spacing: 0.3px !important;
+}
+
+.hero .btn-primary:hover,
+.cta-buttons .btn-primary:hover {
+    transform: translateY(-3px) !important;
+    box-shadow: 0 12px 30px rgba(116, 240, 237, 0.6) !important;
+}
+
+/* Secondary button (Get in Touch) */
+.hero .btn-outline,
+.cta-buttons .btn-outline {
+    font-family: 'Space Grotesk', sans-serif !important;
+    font-weight: 600 !important;
+    font-size: 1.1rem !important;
+    padding: 0.875rem 2rem !important;
+    background: transparent !important;
+    border: 2px solid var(--primary) !important;
+    border-radius: 12px !important;
+    color: var(--primary) !important;
+    transition: all 0.3s ease !important;
+    text-transform: none !important;
+    letter-spacing: 0.3px !important;
+}
+
+.hero .btn-outline:hover,
+.cta-buttons .btn-outline:hover {
+    background: var(--primary) !important;
+    color: white !important;
+    transform: translateY(-3px) !important;
+    box-shadow: 0 8px 20px rgba(116, 240, 237, 0.4) !important;
+}
+
+/* Fix theme toggle button in light mode */
+[data-theme="light"] .theme-toggle {
+    background-color: rgba(0, 0, 0, 0.05) !important;
+    color: #1a1a1a !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+[data-theme="light"] .theme-toggle:hover {
+    background-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+[data-theme="dark"] .theme-toggle {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+[data-theme="dark"] .theme-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+/* Ensure theme toggle is always visible */
+.theme-toggle {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+/* Fix theme toggle icon color - moon should not be black */
+[data-theme="light"] .theme-toggle i,
+[data-theme="light"] .theme-toggle svg {
+    color: #1a1a1a !important;
+    fill: #1a1a1a !important;
+}
+
+[data-theme="dark"] .theme-toggle i,
+[data-theme="dark"] .theme-toggle svg {
+    color: #ffffff !important;
+    fill: #ffffff !important;
+}
+
+/* Reduce hero section padding to show content without scrolling */
+.hero {
+    padding: 5rem 0 3rem !important;
+    min-height: auto !important;
+}
+
+/* Adjust hero content spacing */
+.hero-content {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+.hero-visual {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .hero {
+        padding: 4rem 0 2rem !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        padding: 3rem 0 2rem !important;
+    }
+}
+/* Make theme toggle icon white in both light and dark modes */
+.theme-toggle i,
+.theme-toggle svg,
+[data-theme="light"] .theme-toggle i,
+[data-theme="light"] .theme-toggle svg,
+[data-theme="dark"] .theme-toggle i,
+[data-theme="dark"] .theme-toggle svg {
+    color: #ffffff !important;
+    fill: #ffffff !important;
 }

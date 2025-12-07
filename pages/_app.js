@@ -5,7 +5,7 @@ import '../styles/theme.css';
 import '../styles/index.css';
 import '../styles/projects.css';
 import '../styles/contact.css';
-import '../styles/navbar-fix.css';
+
 import Script from 'next/script';
 
 function MyApp({ Component, pageProps }) {

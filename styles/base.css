@@ -666,4 +666,331 @@ footer {
         right: -45%;
         top: -20%;
     }
+}/* Navbar Fixes - Prevent stretching and ensure proper alignment */
+
+/* Prevent navbar logo/brand from stretching */
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    max-height: 60px;
+}
+
+.navbar-brand img {
+    max-height: 40px;
+    width: auto;
+    object-fit: contain;
+}
+
+/* Ensure navbar items are properly aligned */
+.navbar-nav {
+    align-items: center;
+}
+
+/* Fix navbar collapse on mobile */
+@media (max-width: 991px) {
+    .navbar-collapse {
+        background: var(--background);
+        padding: 1rem;
+        border-radius: 8px;
+        margin-top: 1rem;
+    }
+
+    .navbar-nav {
+        align-items: flex-start;
+    }
+}
+
+/* Ensure navbar stays fixed and doesn't overlap content */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+/* Add padding to body to account for fixed navbar */
+body {
+    padding-top: 70px;
+}
+/* Fix navbar visibility - ensure links and buttons are visible */
+
+/* Remove conflicting navbar positioning that hides content */
+.navbar {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 1030 !important;
+}
+
+/* Ensure navbar content is visible */
+.navbar-nav,
+.navbar-nav .nav-link,
+.navbar .btn {
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: flex !important;
+}
+
+/* Fix navbar collapse visibility */
+.navbar-collapse {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Ensure nav items are displayed */
+.navbar-nav {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+}
+
+/* Mobile navbar */
+@media (max-width: 991px) {
+    .navbar-nav {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+    }
+}
+/* Enhanced Navbar Styling - Better visibility and effects */
+
+/* Dark mode navbar - use dark surface color instead of pure black */
+[data-theme="dark"] .navbar {
+    background-color: rgba(26, 30, 35, 0.95) !important;
+    backdrop-filter: blur(10px) !important;
+    border-bottom: 1px solid rgba(116, 240, 237, 0.1);
+}
+
+/* Light mode navbar */
+[data-theme="light"] .navbar {
+    background-color: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(10px) !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Nav links styling with better font */
+.navbar-nav .nav-link {
+    font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+    font-size: 1rem !important;
+    font-weight: 500 !important;
+    color: var(--text) !important;
+    padding: 0.5rem 1rem !important;
+    margin: 0 0.25rem !important;
+    position: relative !important;
+    transition: all 0.3s ease !important;
+}
+
+/* Hover effect for nav links */
+.navbar-nav .nav-link:hover {
+    color: var(--primary) !important;
+    transform: translateY(-2px);
+}
+
+/* Active link styling */
+.navbar-nav .nav-link.active {
+    color: var(--primary) !important;
+}
+
+/* Underline effect on hover */
+.navbar-nav .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    transition: width 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover::after,
+.navbar-nav .nav-link.active::after {
+    width: 80%;
+}
+
+/* Resume button styling */
+.navbar .btn-primary {
+    font-family: 'Space Grotesk', sans-serif !important;
+    font-weight: 600 !important;
+    padding: 0.5rem 1.5rem !important;
+    background: linear-gradient(135deg, var(--primary), var(--secondary)) !important;
+    border: none !important;
+    border-radius: 8px !important;
+    color: white !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 4px 12px rgba(116, 240, 237, 0.3) !important;
+}
+
+.navbar .btn-primary:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 20px rgba(116, 240, 237, 0.5) !important;
+}
+
+/* Theme toggle button visibility */
+.theme-toggle {
+    color: var(--text) !important;
+    opacity: 1 !important;
+}
+/* Fix nav link underline positioning - remove offset */
+.navbar-nav .nav-link::after {
+    left: 0 !important;
+    transform: none !important;
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+}
+
+.navbar-nav .nav-link:hover::after,
+.navbar-nav .nav-link.active::after {
+    width: 100% !important;
+}
+/* Target the specific "Get in Touch" button on projects page */
+.btn-outline-primary {
+    font-family: 'Space Grotesk', sans-serif !important;
+    font-weight: 600 !important;
+    font-size: 1.1rem !important;
+    padding: 0.875rem 2rem !important;
+    background: transparent !important;
+    border: 2px solid var(--primary) !important;
+    border-radius: 12px !important;
+    color: var(--primary) !important;
+    transition: all 0.3s ease !important;
+    cursor: pointer !important;
+    text-decoration: none !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+}
+
+.btn-outline-primary:hover {
+    background: linear-gradient(135deg, var(--primary), var(--secondary)) !important;
+    color: white !important;
+    transform: translateY(-3px) !important;
+    box-shadow: 0 8px 20px rgba(116, 240, 237, 0.4) !important;
+    border-color: transparent !important;
+}
+
+/* Ensure primary button also looks good */
+.btn-primary {
+    font-family: 'Space Grotesk', sans-serif !important;
+    font-weight: 600 !important;
+    font-size: 1.1rem !important;
+    padding: 0.875rem 2rem !important;
+    background: linear-gradient(135deg, var(--primary), var(--secondary)) !important;
+    border: none !important;
+    border-radius: 12px !important;
+    color: white !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 8px 20px rgba(116, 240, 237, 0.4) !important;
+    cursor: pointer !important;
+    text-decoration: none !important;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px) !important;
+    box-shadow: 0 12px 30px rgba(116, 240, 237, 0.6) !important;
+}
+/* Creative "Get in Touch" button redesign with custom cursor */
+
+/* Override previous button styles with new creative design */
+.btn-outline-primary {
+    font-family: 'Space Grotesk', sans-serif !important;
+    font-weight: 600 !important;
+    font-size: 1.05rem !important;
+    padding: 0.75rem 1.75rem !important;
+    background: rgba(116, 240, 237, 0.1) !important;
+    border: 2px solid var(--primary) !important;
+    border-radius: 50px !important;
+    color: var(--primary) !important;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    cursor: pointer !important;
+    text-decoration: none !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+    position: relative !important;
+    overflow: hidden !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+/* Animated background on hover */
+.btn-outline-primary::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    width: 0 !important;
+    height: 0 !important;
+    border-radius: 50% !important;
+    background: linear-gradient(135deg, var(--primary), var(--secondary)) !important;
+    transition: width 0.6s ease, height 0.6s ease, top 0.6s ease, left 0.6s ease !important;
+    transform: translate(-50%, -50%) !important;
+    z-index: -1 !important;
+}
+
+.btn-outline-primary:hover::before {
+    width: 300% !important;
+    height: 300% !important;
+}
+
+.btn-outline-primary:hover {
+    color: white !important;
+    border-color: var(--secondary) !important;
+    transform: translateY(-2px) scale(1.05) !important;
+    box-shadow: 0 10px 25px rgba(116, 240, 237, 0.5) !important;
+}
+
+/* Custom cursor for the entire page */
+* {
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%2374F0ED" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg>') 12 12, auto !important;
+}
+
+/* Pointer cursor for interactive elements */
+a,
+button,
+.btn,
+.nav-link,
+.project-card,
+.project-cubicle,
+[role="button"] {
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="%2374F0ED" stroke="%2374F0ED" stroke-width="2"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3" fill="white"/></svg>') 14 14, pointer !important;
+}
+
+/* Enhanced primary button */
+.btn-primary {
+    font-family: 'Space Grotesk', sans-serif !important;
+    font-weight: 600 !important;
+    font-size: 1.05rem !important;
+    padding: 0.75rem 1.75rem !important;
+    background: linear-gradient(135deg, var(--primary), var(--secondary)) !important;
+    border: none !important;
+    border-radius: 50px !important;
+    color: white !important;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    box-shadow: 0 6px 20px rgba(116, 240, 237, 0.4) !important;
+    cursor: pointer !important;
+    text-decoration: none !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+.btn-primary::after {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: -100% !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent) !important;
+    transition: left 0.5s ease !important;
+}
+
+.btn-primary:hover::after {
+    left: 100% !important;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px) scale(1.05) !important;
+    box-shadow: 0 12px 35px rgba(116, 240, 237, 0.6) !important;
 }
