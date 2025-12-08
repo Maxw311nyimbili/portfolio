@@ -8,7 +8,7 @@ const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <nav className="navbar navbar-expand-lg fixed-top">
+        <nav className=" navbar navbar-expand-lg fixed-top">
             <div className="container">
                 <Link href="/" className="navbar-brand">
                     <div className="logo">
@@ -29,6 +29,7 @@ const Navbar = () => {
                 >
                     <span className="navbar-toggler-icon"></span>
                 </button>
+                {/* hello */}
 
                 <div className={`collapse navbar-collapse ${isOpen ? 'show' : ''}`} id="navbarNav">
                     <ul className="navbar-nav ms-auto">

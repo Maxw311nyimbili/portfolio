@@ -5,7 +5,7 @@ export default function Document() {
         <Html>
             <Head>
                 {/* Favicon goes here */}
-                <link rel="icon" href="/images/favicon-32x32.png" />
+                <link rel="icon" href="/images/favicon-96x96.png" />
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
                 <link href="https://fonts.googleapis.com/css2?family=Doto:wght@700;800;900&display=swap" rel="stylesheet" />
