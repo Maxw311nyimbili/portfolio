@@ -18,8 +18,10 @@ export default function SiteLayout({ children, title, description }) {
     const router = useRouter();
     const [theme, setTheme] = useState('light');
 
+    // v2 key: v1 stored values from when dark was the default; rotating
+    // the key resets every visitor to the light default once.
     useEffect(() => {
-        const saved = window.localStorage.getItem('portfolio-theme');
+        const saved = window.localStorage.getItem('portfolio-theme-v2');
         if (saved === 'light' || saved === 'dark') setTheme(saved);
     }, []);
 
@@ -30,7 +32,7 @@ export default function SiteLayout({ children, title, description }) {
     const toggleTheme = () => {
         setTheme((t) => {
             const next = t === 'dark' ? 'light' : 'dark';
-            window.localStorage.setItem('portfolio-theme', next);
+            window.localStorage.setItem('portfolio-theme-v2', next);
             return next;
         });
     };

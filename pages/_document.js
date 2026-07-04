@@ -13,7 +13,7 @@ export default function Document() {
                 <script
                     dangerouslySetInnerHTML={{
                         __html:
-                            "try{var t=localStorage.getItem('portfolio-theme');document.documentElement.dataset.theme=(t==='dark'?'dark':'light');}catch(e){document.documentElement.dataset.theme='light';}",
+                            "try{var t=localStorage.getItem('portfolio-theme-v2');document.documentElement.dataset.theme=(t==='dark'?'dark':'light');}catch(e){document.documentElement.dataset.theme='light';}",
                     }}
                 />
                 <Main />
