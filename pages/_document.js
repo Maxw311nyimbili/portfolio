@@ -6,20 +6,14 @@ export default function Document() {
             <Head>
                 {/* Favicon goes here */}
                 <link rel="icon" href="/images/favicon-96x96.png" />
-                <link rel="preconnect" href="https://fonts.googleapis.com" />
-                <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-                <link href="https://fonts.googleapis.com/css2?family=Doto:wght@700;800;900&display=swap" rel="stylesheet" />
-                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
             </Head>
             <body>
+                {/* Apply saved theme before paint to avoid a flash.
+                    Light is the default. */}
                 <script
                     dangerouslySetInnerHTML={{
-                        __html: `
-                            (function() {
-                                const theme = localStorage.getItem('theme') || 'dark';
-                                document.documentElement.setAttribute('data-theme', theme);
-                            })();
-                        `,
+                        __html:
+                            "try{var t=localStorage.getItem('portfolio-theme');document.documentElement.dataset.theme=(t==='dark'?'dark':'light');}catch(e){document.documentElement.dataset.theme='light';}",
                     }}
                 />
                 <Main />
