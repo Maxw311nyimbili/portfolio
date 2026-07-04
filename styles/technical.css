@@ -1,0 +1,1302 @@
+/* ==========================================================================
+   Design system — monochrome, confident, light only.
+   One heavy sans typeface for content, one small mono-uppercase treatment
+   reserved for metadata labels (dates, indices, page numbers). Hairline
+   rules for structure, no boxes, no grids, no color accents.
+   ========================================================================== */
+
+:root {
+    --bg: #FFFFFF;
+    --surface: #FAFAFA;
+    --ink: #0A0A0A;
+    --ink-soft: #6F6F6F;
+    --ink-faint: #BFBFBF;
+    --line: #0A0A0A;
+    --line-soft: #E4E4E1;
+    --ok: #1F7A3D;
+    --err: #C0392B;
+
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-mono: 'IBM Plex Mono', 'SFMono-Regular', Menlo, Consolas, monospace;
+
+    --container: 1180px;
+    --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* --------------------------------------------------------------------
+   Reset / base
+   -------------------------------------------------------------------- */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    padding-top: 0 !important;
+}
+
+.t-root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.t-root main {
+    flex: 1;
+}
+
+.t-root h1, .t-root h2, .t-root h3, .t-root h4, .t-root h5, .t-root h6 {
+    font-family: var(--font-sans);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin: 0;
+}
+
+.t-root p {
+    margin: 0;
+}
+
+.t-root a {
+    color: inherit;
+}
+
+.container {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 0 32px;
+}
+
+@media (max-width: 860px) {
+    .container {
+        padding: 0 20px;
+    }
+}
+
+/* Small uppercase mono label — used throughout for metadata only */
+.eyebrow,
+.hero__tag,
+.page-header__meta,
+.section__label,
+.spec-cell__label,
+.spec-table__label,
+.log-entry__date,
+.log-entry__company,
+.index-item__num,
+.project-card__index,
+.discipline-count,
+.t-modal__category,
+.t-modal__visual-label,
+.tag-group h6,
+.form-row label,
+.skill-table__head {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ink-soft);
+}
+
+/* --------------------------------------------------------------------
+   Header / nav
+   -------------------------------------------------------------------- */
+
+.t-header {
+    position: sticky;
+    top: 0;
+    z-index: 500;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+}
+
+.t-header__inner {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 0 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 72px;
+}
+
+.t-logo {
+    font-size: 1rem;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    text-decoration: none;
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    white-space: nowrap;
+}
+
+.t-logo .dot {
+    display: none;
+}
+
+.t-logo span {
+    font-family: var(--font-mono);
+    color: var(--ink-soft);
+    font-weight: 400;
+    font-size: 0.6875rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+@media (max-width: 640px) {
+    .t-logo span { display: none; }
+}
+
+.t-nav {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    gap: 2rem;
+}
+
+.t-nav__links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    height: 100%;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.t-nav__links li {
+    display: flex;
+    height: 100%;
+    align-items: center;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    height: 100%;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--ink-soft);
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: color 0.15s var(--ease), border-color 0.15s var(--ease);
+    white-space: nowrap;
+}
+
+.nav-link .num {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    color: var(--ink-faint);
+}
+
+.nav-link:hover {
+    color: var(--ink);
+}
+
+.nav-link.active {
+    color: var(--ink);
+    border-bottom-color: var(--ink);
+}
+
+.nav-resume {
+    display: flex;
+    align-items: center;
+    padding: 0.55rem 1.1rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--ink);
+    text-decoration: none;
+    border: 1px solid var(--ink);
+    transition: background-color 0.15s var(--ease), color 0.15s var(--ease);
+}
+
+.nav-resume:hover {
+    background: var(--ink);
+    color: var(--bg);
+}
+
+.theme-toggle {
+    display: none;
+}
+
+.nav-toggle {
+    display: none;
+    width: 40px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: transparent;
+    color: var(--ink);
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+@media (max-width: 860px) {
+    .t-header__inner {
+        padding: 0 20px;
+    }
+
+    .nav-toggle {
+        display: flex;
+        order: 3;
+    }
+
+    .t-nav {
+        position: fixed;
+        inset: 72px 0 0 0;
+        background: var(--bg);
+        flex-direction: column;
+        align-items: stretch;
+        height: auto;
+        border-top: 1px solid var(--line);
+        transform: translateY(-110%);
+        transition: transform 0.25s var(--ease);
+        z-index: 400;
+        gap: 0;
+    }
+
+    .t-nav.is-open {
+        transform: translateY(0);
+    }
+
+    .t-nav__links {
+        flex-direction: column;
+        height: auto;
+        align-items: stretch;
+        gap: 0;
+    }
+
+    .t-nav__links li {
+        border-bottom: 1px solid var(--line-soft);
+        height: auto;
+    }
+
+    .nav-link, .nav-resume {
+        height: 56px;
+        padding: 0 20px;
+        border: none;
+        width: 100%;
+    }
+
+    .nav-resume {
+        margin: 16px 20px;
+        width: auto;
+        border: 1px solid var(--ink);
+    }
+}
+
+/* --------------------------------------------------------------------
+   Status indicator (header right side, desktop)
+   -------------------------------------------------------------------- */
+
+.t-status {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8125rem;
+    color: var(--ink-soft);
+}
+
+.t-status__dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--ink-soft);
+}
+
+@media (max-width: 1080px) {
+    .t-status { display: none; }
+}
+
+/* --------------------------------------------------------------------
+   Footer
+   -------------------------------------------------------------------- */
+
+.t-footer {
+    border-top: 1px solid var(--line);
+}
+
+.t-footer__inner {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 1.5rem 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-size: 0.8125rem;
+    color: var(--ink-soft);
+}
+
+.t-footer a {
+    color: var(--ink-soft);
+    text-decoration: none;
+    transition: color 0.15s var(--ease);
+}
+
+.t-footer a:hover {
+    color: var(--ink);
+}
+
+.footer-links {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+@media (max-width: 860px) {
+    .t-footer__inner {
+        padding: 1.5rem 20px;
+        justify-content: center;
+        text-align: center;
+    }
+}
+
+/* --------------------------------------------------------------------
+   Hero (homepage overview)
+   -------------------------------------------------------------------- */
+
+.hero {
+    padding: 4.5rem 0 0;
+    border-bottom: 1px solid var(--line);
+}
+
+.hero__tag {
+    margin-bottom: 1.75rem;
+}
+
+.hero__title {
+    font-size: clamp(3rem, 9vw, 6rem);
+    line-height: 0.98;
+    margin-bottom: 1.5rem;
+}
+
+.hero__role {
+    font-size: 1.125rem;
+    color: var(--ink-soft);
+    max-width: 620px;
+    margin-bottom: 2.75rem;
+    font-weight: 400;
+}
+
+.hero__role strong {
+    color: var(--ink);
+    font-weight: 600;
+}
+
+/* Spec row beneath hero */
+.spec-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid var(--line);
+}
+
+.spec-cell {
+    padding: 1.25rem 1.5rem;
+    border-left: 1px solid var(--line-soft);
+}
+
+.spec-cell:first-child {
+    border-left: none;
+    padding-left: 0;
+}
+
+.spec-cell__label {
+    margin-bottom: 0.4rem;
+    display: block;
+}
+
+.spec-cell__value {
+    font-size: 0.9375rem;
+    font-weight: 600;
+}
+
+@media (max-width: 860px) {
+    .spec-row { grid-template-columns: repeat(2, 1fr); }
+    .spec-cell:nth-child(3) { border-left: none; }
+    .spec-cell:nth-child(odd) { padding-left: 0; }
+}
+
+@media (max-width: 480px) {
+    .spec-row { grid-template-columns: 1fr; }
+    .spec-cell { border-left: none; border-top: 1px solid var(--line-soft); padding-left: 0; }
+    .spec-row .spec-cell:first-child { border-top: none; }
+}
+
+/* --------------------------------------------------------------------
+   Page header (About / Experience / Skills / Work / Contact)
+   -------------------------------------------------------------------- */
+
+.page-header {
+    padding: 3rem 0 2.5rem;
+    border-bottom: 1px solid var(--line);
+}
+
+.page-header__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.page-header__meta .accent {
+    color: var(--ink);
+    font-weight: 600;
+}
+
+.page-header__title {
+    font-size: clamp(2.25rem, 6vw, 4rem);
+    margin-bottom: 1rem;
+}
+
+.page-header__desc {
+    font-family: var(--font-sans);
+    color: var(--ink-soft);
+    max-width: 620px;
+    font-size: 1.0625rem;
+}
+
+/* --------------------------------------------------------------------
+   Section wrapper
+   -------------------------------------------------------------------- */
+
+.section {
+    padding: 3.5rem 0;
+    border-bottom: 1px solid var(--line-soft);
+}
+
+.section:last-of-type {
+    border-bottom: none;
+}
+
+.section__label {
+    margin-bottom: 1.5rem;
+    display: block;
+}
+
+.section__title {
+    font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+    margin-bottom: 1rem;
+}
+
+.section__intro {
+    font-family: var(--font-sans);
+    color: var(--ink-soft);
+    max-width: 620px;
+    margin-bottom: 1.5rem;
+    font-size: 1.0625rem;
+}
+
+/* --------------------------------------------------------------------
+   Index list — directory of pages / selected work
+   -------------------------------------------------------------------- */
+
+.index-list {
+    border-top: 1px solid var(--line);
+}
+
+.index-item {
+    display: grid;
+    grid-template-columns: 3.5rem 1fr auto;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.75rem 0;
+    border-bottom: 1px solid var(--line-soft);
+    text-decoration: none;
+    color: var(--ink);
+    transition: opacity 0.15s var(--ease);
+}
+
+.index-item:hover {
+    opacity: 0.55;
+}
+
+.index-item__title {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 1.375rem;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.35rem;
+}
+
+.index-item__desc {
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    color: var(--ink-soft);
+    max-width: 560px;
+}
+
+.index-item__tags {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 0.6rem;
+}
+
+.index-item__arrow {
+    color: var(--ink-faint);
+    transition: transform 0.15s var(--ease), color 0.15s var(--ease);
+    font-size: 1.1rem;
+}
+
+.index-item:hover .index-item__arrow {
+    color: var(--ink);
+    transform: translateX(4px);
+}
+
+@media (max-width: 640px) {
+    .index-item {
+        grid-template-columns: 2.5rem 1fr;
+    }
+    .index-item__arrow {
+        display: none;
+    }
+}
+
+/* --------------------------------------------------------------------
+   Tags / labels
+   -------------------------------------------------------------------- */
+
+.tag {
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--ink-soft);
+}
+
+.tag::before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--ink-faint);
+    margin-right: 0.5rem;
+    vertical-align: middle;
+}
+
+.tag--accent {
+    color: var(--ink);
+    font-weight: 700;
+}
+
+/* --------------------------------------------------------------------
+   Buttons
+   -------------------------------------------------------------------- */
+
+.btn-tech {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 600;
+    border: 1px solid var(--ink);
+    padding: 0.9rem 1.5rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: transparent;
+    color: var(--ink);
+    text-decoration: none;
+    transition: background-color 0.15s var(--ease), color 0.15s var(--ease);
+}
+
+.btn-tech:hover {
+    background: var(--ink);
+    color: var(--bg);
+}
+
+.btn-tech--accent {
+    background: var(--ink);
+    color: var(--bg);
+    border-color: var(--ink);
+}
+
+.btn-tech--accent:hover {
+    background: var(--ink-soft);
+    border-color: var(--ink-soft);
+}
+
+.btn-tech:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.btn-row {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+/* --------------------------------------------------------------------
+   Bracket card → simple panel
+   -------------------------------------------------------------------- */
+
+.bracket-card {
+    border: 1px solid var(--line-soft);
+    padding: 2rem;
+}
+
+.bracket-card__label {
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.bracket-card h4 {
+    font-size: 1.25rem;
+    margin-bottom: 0.35rem;
+}
+
+.bracket-card h5 {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: 0.9375rem;
+    color: var(--ink-soft);
+    margin-bottom: 1.75rem;
+}
+
+.tag-group {
+    margin-top: 1.5rem;
+}
+
+.tag-group h6 {
+    margin-bottom: 0.75rem;
+    display: block;
+}
+
+.tag-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.tag-list li {
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    color: var(--ink);
+}
+
+/* --------------------------------------------------------------------
+   Spec table — label / value rows
+   -------------------------------------------------------------------- */
+
+.spec-table {
+    border-top: 1px solid var(--line);
+}
+
+.spec-table__row {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 1.5rem;
+    padding: 1.25rem 0;
+    border-bottom: 1px solid var(--line-soft);
+}
+
+.spec-table__label {
+    align-self: start;
+    padding-top: 0.2rem;
+}
+
+.spec-table__value {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+}
+
+@media (max-width: 640px) {
+    .spec-table__row {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+}
+
+/* --------------------------------------------------------------------
+   About grid
+   -------------------------------------------------------------------- */
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 3rem;
+}
+
+@media (max-width: 860px) {
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
+
+.prose h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+}
+
+.prose p {
+    font-family: var(--font-sans);
+    color: var(--ink-soft);
+    font-size: 1.0625rem;
+    margin-bottom: 2rem;
+    max-width: 640px;
+}
+
+.prose h3:last-of-type,
+.prose p:last-child {
+    margin-bottom: 0;
+}
+
+/* --------------------------------------------------------------------
+   Experience — log entries
+   -------------------------------------------------------------------- */
+
+.exp-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.log-entry {
+    border-bottom: 1px solid var(--line-soft);
+    padding: 2.25rem 0;
+}
+
+.log-entry:first-child {
+    padding-top: 0;
+}
+
+.log-entry:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.log-entry__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.log-entry__heading {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.log-entry__role {
+    font-size: 1.375rem;
+}
+
+.log-entry__company {
+    order: -1;
+}
+
+.log-entry__date {
+    white-space: nowrap;
+    padding-top: 0.2rem;
+}
+
+.log-entry__body ul {
+    list-style: none;
+    margin: 0 0 1.5rem;
+    padding: 0;
+}
+
+.log-entry__body li {
+    font-family: var(--font-sans);
+    color: var(--ink-soft);
+    padding-left: 1.4rem;
+    position: relative;
+    margin-bottom: 0.7rem;
+    font-size: 0.9375rem;
+}
+
+.log-entry__body li:last-child {
+    margin-bottom: 0;
+}
+
+.log-entry__body li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.65em;
+    width: 6px;
+    height: 1px;
+    background: var(--ink-faint);
+}
+
+.log-entry__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    margin-top: 1.5rem;
+}
+
+.log-entry__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--ink);
+    text-decoration: underline;
+    text-decoration-color: var(--line-soft);
+    text-underline-offset: 4px;
+    margin-bottom: 1.5rem;
+}
+
+.log-entry__link:hover {
+    text-decoration-color: var(--ink);
+}
+
+/* --------------------------------------------------------------------
+   Skills — grouped tables
+   -------------------------------------------------------------------- */
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+}
+
+@media (max-width: 960px) {
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.skill-table {
+    display: flex;
+    flex-direction: column;
+}
+
+.skill-table__head {
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 0.25rem;
+    display: block;
+}
+
+.skill-table__row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.85rem 0;
+    border-bottom: 1px solid var(--line-soft);
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+}
+
+.skill-table__row:last-child {
+    border-bottom: none;
+}
+
+.skill-table__row .level {
+    color: var(--ink-faint);
+    font-size: 0.75rem;
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+/* --------------------------------------------------------------------
+   Process / how-I-work list
+   -------------------------------------------------------------------- */
+
+.process-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.process-item {
+    display: grid;
+    grid-template-columns: 4.5rem 1fr;
+    gap: 1.5rem;
+    padding: 1.75rem 0;
+    border-bottom: 1px solid var(--line-soft);
+}
+
+.process-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.process-item:first-child {
+    padding-top: 0;
+}
+
+.process-item__num {
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-size: 1.125rem;
+    color: var(--ink-faint);
+}
+
+.process-item__title {
+    font-size: 1.125rem;
+    margin-bottom: 0.5rem;
+}
+
+.process-item__desc {
+    font-family: var(--font-sans);
+    color: var(--ink-soft);
+    max-width: 640px;
+    font-size: 0.9375rem;
+}
+
+/* --------------------------------------------------------------------
+   Project grid + cards (Work index, category pages)
+   -------------------------------------------------------------------- */
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2.5rem 2rem;
+}
+
+.project-card {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: var(--ink);
+}
+
+.project-card__image {
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: var(--surface);
+    margin-bottom: 1.25rem;
+}
+
+.project-card__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: opacity 0.2s var(--ease);
+}
+
+.project-card:hover .project-card__image img {
+    opacity: 0.85;
+}
+
+.project-card__body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    flex: 1;
+}
+
+.project-card__title {
+    font-size: 1.0625rem;
+}
+
+.project-card__desc {
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    color: var(--ink-soft);
+    flex: 1;
+}
+
+.project-card__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 0.4rem;
+}
+
+/* --------------------------------------------------------------------
+   Project modal
+   -------------------------------------------------------------------- */
+
+.t-modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 10, 10, 0.5);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+}
+
+.t-modal {
+    background: var(--bg);
+    border: 1px solid var(--line);
+    width: 100%;
+    max-width: 980px;
+    max-height: 88vh;
+    overflow-y: auto;
+    position: relative;
+}
+
+.t-modal__close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 48px;
+    height: 48px;
+    border: none;
+    border-left: 1px solid var(--line-soft);
+    border-bottom: 1px solid var(--line-soft);
+    background: var(--bg);
+    color: var(--ink);
+    font-size: 1.1rem;
+    cursor: pointer;
+    z-index: 10;
+    transition: background-color 0.15s var(--ease), color 0.15s var(--ease);
+}
+
+.t-modal__close:hover {
+    background: var(--ink);
+    color: var(--bg);
+}
+
+.t-modal__header {
+    padding: 2rem 2rem 1.5rem;
+    border-bottom: 1px solid var(--line);
+}
+
+.t-modal__title {
+    font-size: 1.625rem;
+    margin-bottom: 0.5rem;
+    padding-right: 3rem;
+}
+
+.t-modal__tabs {
+    display: flex;
+    border-bottom: 1px solid var(--line);
+    gap: 1.5rem;
+    padding: 0 2rem;
+}
+
+.t-modal__tab {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 600;
+    padding: 1rem 0;
+    border: none;
+    border-bottom: 2px solid transparent;
+    background: transparent;
+    color: var(--ink-soft);
+    cursor: pointer;
+    transition: color 0.15s var(--ease), border-color 0.15s var(--ease);
+    margin-bottom: -1px;
+}
+
+.t-modal__tab:hover {
+    color: var(--ink);
+}
+
+.t-modal__tab.active {
+    color: var(--ink);
+    border-bottom-color: var(--ink);
+}
+
+.t-modal__content {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+}
+
+@media (max-width: 760px) {
+    .t-modal__content {
+        grid-template-columns: 1fr;
+    }
+}
+
+.t-modal__text {
+    padding: 2rem;
+    border-right: 1px solid var(--line-soft);
+}
+
+@media (max-width: 760px) {
+    .t-modal__text {
+        border-right: none;
+        border-bottom: 1px solid var(--line-soft);
+    }
+}
+
+.t-modal__text h3 {
+    font-size: 1.0625rem;
+    margin-bottom: 0.85rem;
+}
+
+.t-modal__text p {
+    font-family: var(--font-sans);
+    color: var(--ink-soft);
+    font-size: 0.9375rem;
+    margin-bottom: 1.25rem;
+}
+
+.t-modal__text h4 {
+    margin-bottom: 0.85rem;
+    display: block;
+}
+
+.t-modal__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.t-modal__visual {
+    padding: 2rem;
+}
+
+.t-modal__visual-label {
+    margin-bottom: 0.85rem;
+    display: block;
+}
+
+.t-modal__visual img {
+    width: 100%;
+    border: 1px solid var(--line-soft);
+    margin-bottom: 1.25rem;
+    display: block;
+}
+
+.t-modal__actions {
+    display: flex;
+    flex-direction: column;
+}
+
+.t-modal__actions a,
+.t-modal__actions button {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 600;
+    padding: 1rem 0;
+    background: transparent;
+    color: var(--ink);
+    text-decoration: none;
+    border: none;
+    border-top: 1px solid var(--line-soft);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.6rem;
+    cursor: pointer;
+    transition: opacity 0.15s var(--ease);
+}
+
+.t-modal__actions a:hover,
+.t-modal__actions button:hover {
+    opacity: 0.55;
+}
+
+/* --------------------------------------------------------------------
+   Contact
+   -------------------------------------------------------------------- */
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 3rem;
+}
+
+@media (max-width: 860px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+}
+
+.contact-email {
+    font-family: var(--font-sans);
+    font-weight: 800;
+    font-size: clamp(1.5rem, 4vw, 2.25rem);
+    letter-spacing: -0.02em;
+    text-decoration: underline;
+    text-decoration-color: var(--line-soft);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 6px;
+    word-break: break-all;
+    transition: text-decoration-color 0.15s var(--ease);
+    display: inline-block;
+}
+
+.contact-email:hover {
+    text-decoration-color: var(--ink);
+}
+
+.form-row {
+    margin-bottom: 1.5rem;
+}
+
+.form-row label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.form-row input,
+.form-row textarea {
+    width: 100%;
+    border: 1px solid var(--line-soft);
+    background: var(--bg);
+    color: var(--ink);
+    padding: 0.9rem 1rem;
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    border-radius: 0;
+    transition: border-color 0.15s var(--ease);
+}
+
+.form-row input:focus,
+.form-row textarea:focus {
+    outline: none;
+    border-color: var(--ink);
+}
+
+.form-row textarea {
+    min-height: 140px;
+    resize: vertical;
+}
+
+.form-status {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 500;
+    padding: 0.9rem 1rem;
+    border: 1px solid var(--line-soft);
+    margin-bottom: 1.5rem;
+}
+
+.form-status--ok {
+    border-color: var(--ok);
+    color: var(--ok);
+}
+
+.form-status--err {
+    border-color: var(--err);
+    color: var(--err);
+}
+
+.contact-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}

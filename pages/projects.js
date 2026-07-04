@@ -1,107 +1,149 @@
-import Layout from '../components/Layout';
-import Link from 'next/link';
-import { FiCpu, FiCode, FiLayers, FiSmartphone } from 'react-icons/fi';
+import SiteLayout from '../components/SiteLayout';
+
+// Standalone projects page — all work, grouped by discipline,
+// in the "Portfolio Final" design language.
+
+const GROUPS = [
+    {
+        label: 'AI ENGINEERING',
+        projects: [
+            {
+                img: '/images/p2.png',
+                title: 'Vantage FotoFinder',
+                desc: 'CLIP + FAISS semantic image search. Upload an image, find visually similar products from any catalog.',
+                tech: 'Next.js · FastAPI · CLIP · FAISS · TypeScript',
+                github: 'https://github.com/Maxw311nyimbili/FotoFinder_frontend',
+                demo: 'https://www.youtube.com/watch?v=t6d57bdfEdI',
+            },
+            {
+                img: '/images/p1.png',
+                title: 'Paper Summary',
+                desc: '45 min of reading → 10 second synthesis. Research papers deconstructed by llama-3.3-70b on Groq.',
+                tech: 'Next.js · FastAPI · Groq · PyPDF',
+                github: 'https://github.com/Maxw311nyimbili/paper_summary_frontend',
+                demo: 'https://www.youtube.com/watch?v=zyi6xoJZgD0',
+            },
+            {
+                img: '/images/p3.png',
+                title: 'Propel',
+                desc: 'Resume optimization against job descriptions — ATS keywords, skill gaps, data-driven suggestions.',
+                tech: 'Next.js · FastAPI · Groq · Framer Motion',
+                github: 'https://github.com/Maxw311nyimbili/propel_app_frontend',
+                demo: 'https://www.youtube.com/watch?v=udZ7bsnvw1M',
+            },
+            {
+                img: '/images/p4.png',
+                title: 'Voyage',
+                desc: 'AI travel itineraries with interactive maps and offline PDF export.',
+                tech: 'Next.js · FastAPI · Groq · Leaflet',
+                github: 'https://github.com/Maxw311nyimbili/voyage_frontend',
+                demo: 'https://www.youtube.com/watch?v=ssqeRswHezE',
+            },
+            {
+                img: '/images/nkani.png',
+                title: 'Nkani News Aggregator',
+                desc: 'Real-time news scraping with VADER sentiment analysis — the emotional tone of every story, upfront.',
+                tech: 'Flask · NLP · VADER · Beautiful Soup',
+                github: 'https://github.com/Maxw311nyimbili/nkani_aggregator',
+                demo: 'https://www.youtube.com/watch?v=53Kua8HQNzE',
+            },
+        ],
+    },
+    {
+        label: 'FULL-STACK',
+        projects: [
+            {
+                img: '/images/fullstack-1.png',
+                title: 'Mini E-Commerce',
+                desc: 'Catalog, cart, checkout. Product filtering, Context API state, MongoDB storage.',
+                tech: 'React (Vite) · Node.js · MongoDB · Tailwind',
+                github: 'https://github.com/Maxw311nyimbili/FUTURE_FS_02',
+                demo: 'https://future-fs-02-tau.vercel.app/',
+            },
+            {
+                img: '/images/fullstack-2.png',
+                title: 'Berkshire Hathaway Redesign',
+                desc: 'The famously plain corporate site, rebuilt — minimal, responsive, still all substance.',
+                tech: 'React (Vite) · Node.js · MongoDB · Tailwind',
+                github: 'https://github.com/Maxw311nyimbili/FUTURE_FS_03',
+                demo: 'https://future-fs-03-drab.vercel.app/',
+            },
+            {
+                img: '/images/portfolio.png',
+                title: 'Personal Portfolio',
+                desc: 'This site. Next.js, editorial layout, light/dark theming.',
+                tech: 'Next.js · React · CSS',
+                github: 'https://github.com/Maxw311nyimbili/portfolio',
+            },
+        ],
+    },
+    {
+        label: 'DESKTOP / SYSTEMS',
+        projects: [
+            {
+                img: '/images/events_manager.png',
+                title: 'Events Manager',
+                desc: 'Event scheduling desktop app — fast lookups via HashMap-backed storage.',
+                tech: 'Java · JavaFX',
+                github: 'https://github.com/Maxw311nyimbili/eventsManager',
+                demo: 'https://www.youtube.com/watch?v=X5PeW4KRCQE',
+            },
+            {
+                img: '/images/chronoscholar.png',
+                title: 'ChronoScholar',
+                desc: 'Task management meets GPA tracking — daily productivity tied to academic goals.',
+                tech: 'Java · JavaFX · SQL',
+                github: 'https://github.com/Maxw311nyimbili/chronoScholar',
+                demo: 'https://www.youtube.com/watch?v=pe4Qz30JqQk',
+            },
+            {
+                img: '/images/student-management.png',
+                title: 'Student Management System',
+                desc: 'Student, faculty, and course records with relational integrity.',
+                tech: 'C++/CLI · MySQL',
+                demo: 'https://www.youtube.com/watch?v=bYjuQxDN-oo',
+            },
+        ],
+    },
+];
 
 export default function Projects() {
-    // Four main disciplines
-    const disciplines = [
-        {
-            id: 'ai',
-            title: 'AI Engineering',
-            icon: FiCpu,
-            description: 'Machine learning, NLP, and intelligent systems',
-            color: 'var(--primary)',
-            count: 5
-        },
-        {
-            id: 'fullstack',
-            title: 'Full-Stack Development',
-            icon: FiCode,
-            description: 'End-to-end web applications and APIs',
-            color: 'var(--primary)',
-            count: 2
-        },
-        {
-            id: 'design',
-            title: 'Product Design',
-            icon: FiLayers,
-            description: 'UI/UX design and user-centered experiences',
-            color: 'var(--primary)',
-            count: 1
-        },
-        {
-            id: 'mobile',
-            title: 'Mobile Development',
-            icon: FiSmartphone,
-            description: 'Native and cross-platform mobile apps',
-            color: 'var(--primary)',
-            count: 3
-        }
-    ];
-
     return (
-        <Layout>
-            {/* Hero Section */}
-            <section className="hero" style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <div className="container text-center">
-                    <h1 className="hero-title" data-aos="fade-up" style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', marginBottom: '1.5rem' }}>
-                        I design, build, and deploy
-                        <br />
-                        <span style={{ background: 'linear-gradient(135deg, var(--primary), var(--secondary))', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-                            intelligent experiences
-                        </span>
-                    </h1>
-                    <p className="hero-text" data-aos="fade-up" data-aos-delay="100" style={{ fontSize: '1.25rem', maxWidth: '700px', margin: '0 auto 2rem' }}>
-                        Exploring the intersection of AI, full-stack development, product design, and mobile innovation
-                    </p>
-                    <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }} data-aos="fade-up" data-aos-delay="200">
-                        <a href="#disciplines" className="btn btn-primary">Explore Disciplines</a>
-                        <Link href="/contact" className="btn btn-outline-primary">Get in Touch</Link>
-                    </div>
-                </div>
-            </section>
+        <SiteLayout
+            title="Projects — Maxwell Nyimbili"
+            description="AI engineering, full-stack, and systems projects by Maxwell Nyimbili."
+        >
+            <div className="page-head">
+                <h1>Selected work.</h1>
+                <p>
+                    AI engineering, full-stack builds, and systems projects — each one a
+                    problem worth solving, not a tutorial retread.
+                </p>
+            </div>
 
-            {/* Four Discipline Cards */}
-            <section id="disciplines" className="section bg-light">
-                <div className="container">
-                    <div className="row">
-                        <div className="col-lg-12 text-center mb-5">
-                            <h2 className="section-title" data-aos="fade-up">Four Disciplines</h2>
-                            <p className="section-subtitle" data-aos="fade-up" data-aos-delay="100">
-                                Specialized expertise across multiple domains of technology
-                            </p>
-                        </div>
-                    </div>
-
-                    <div className="row g-4">
-                        {disciplines.map((discipline, index) => {
-                            const IconComponent = discipline.icon;
-                            return (
-                                <div key={discipline.id} className="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay={index * 100}>
-                                    <Link href={`/projects/${discipline.id}`} className="discipline-card">
-                                        <div className="discipline-icon">
-                                            <IconComponent style={{ color: discipline.color }} />
-                                        </div>
-                                        <h3 className="discipline-title">
-                                            {discipline.title}
-                                        </h3>
-                                        <p className="discipline-description">
-                                            {discipline.description}
-                                        </p>
-                                        <div className="discipline-footer">
-                                            <div className="project-count">
-                                                <i className="fas fa-folder" style={{ color: discipline.color }}></i>
-                                                <span>{discipline.count} {discipline.count === 1 ? 'Project' : 'Projects'}</span>
-                                            </div>
-                                            <i className="fas fa-arrow-right arrow-icon" style={{ color: discipline.color }}></i>
-                                        </div>
-                                    </Link>
+            {GROUPS.map((group) => (
+                <section className="projects-section" key={group.label}>
+                    <div className="section-label">{group.label}</div>
+                    <div className="project-grid">
+                        {group.projects.map((p) => (
+                            <div className="project-card" key={p.title}>
+                                <img src={p.img} alt={p.title} />
+                                <div className="project-title">{p.title}</div>
+                                <div className="project-desc">{p.desc}</div>
+                                <div className="project-tech">{p.tech}</div>
+                                <div className="project-links">
+                                    {p.github && (
+                                        <a href={p.github} target="_blank" rel="noopener noreferrer">GITHUB ↗</a>
+                                    )}
+                                    {p.demo && (
+                                        <a href={p.demo} target="_blank" rel="noopener noreferrer">DEMO ↗</a>
+                                    )}
                                 </div>
-                            );
-                        })}
+                            </div>
+                        ))}
                     </div>
-                </div>
-            </section>
-        </Layout>
+                </section>
+            ))}
+        </SiteLayout>
     );
 }
