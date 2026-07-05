@@ -608,17 +608,17 @@
         gap: 18px;
     }
 
-    .hero,
     .about-exp,
     .contact-wrap {
         flex-direction: column;
     }
 
+    /* Image first on mobile — visible without scrolling, copy below */
     .hero {
+        flex-direction: column-reverse;
         min-height: 0;
     }
 
-    .hero-copy,
     .about,
     .contact-info {
         border-right: none;
@@ -626,7 +626,8 @@
     }
 
     .hero-copy {
-        padding: 56px 24px;
+        border-right: none;
+        padding: 48px 24px 56px;
     }
 
     .hero-copy h1 {
@@ -634,7 +635,8 @@
     }
 
     .hero-img {
-        min-height: 420px;
+        min-height: 380px;
+        border-bottom: 1px solid var(--border);
     }
 
     .about,
