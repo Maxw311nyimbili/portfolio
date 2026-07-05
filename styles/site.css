@@ -145,7 +145,7 @@
 .hero {
     display: flex;
     border-bottom: 1px solid var(--border);
-    min-height: 660px;
+    min-height: 700px;
 }
 
 .hero-copy {
@@ -212,7 +212,7 @@
 }
 
 .hero-img {
-    flex: 1.45;
+    flex: 1.7;
     position: relative;
 }
 
@@ -488,6 +488,26 @@
     resize: vertical;
 }
 
+.field input.invalid {
+    border-color: #c43d3d;
+}
+
+.field-hint {
+    font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 6px;
+    letter-spacing: 0.02em;
+}
+
+.field-error {
+    font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+    font-size: 11px;
+    color: #c43d3d;
+    margin-top: 6px;
+    letter-spacing: 0.02em;
+}
+
 /* Honeypot: hidden from humans, present for bots */
 .field-hp {
     position: absolute;
@@ -588,17 +608,17 @@
         gap: 18px;
     }
 
-    .hero,
     .about-exp,
     .contact-wrap {
         flex-direction: column;
     }
 
+    /* Image first on mobile — visible without scrolling, copy below */
     .hero {
+        flex-direction: column-reverse;
         min-height: 0;
     }
 
-    .hero-copy,
     .about,
     .contact-info {
         border-right: none;
@@ -606,7 +626,8 @@
     }
 
     .hero-copy {
-        padding: 56px 24px;
+        border-right: none;
+        padding: 48px 24px 56px;
     }
 
     .hero-copy h1 {
@@ -614,7 +635,8 @@
     }
 
     .hero-img {
-        min-height: 420px;
+        min-height: 380px;
+        border-bottom: 1px solid var(--border);
     }
 
     .about,

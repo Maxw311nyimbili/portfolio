@@ -5,17 +5,37 @@ import SiteLayout from '../components/SiteLayout';
 // address — messages go through /api/contact, which delivers
 // server-side. The "company" field is a honeypot for bots.
 
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/;
+
 export default function Contact() {
     const [form, setForm] = useState({ name: '', email: '', subject: '', text: '', company: '' });
     const [status, setStatus] = useState(null);
     const [sending, setSending] = useState(false);
+    const [emailError, setEmailError] = useState(null);
 
-    const onChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
+    const onChange = (e) => {
+        setForm({ ...form, [e.target.name]: e.target.value });
+        if (e.target.name === 'email' && emailError) setEmailError(null);
+    };
+
+    const checkEmail = () => {
+        if (form.email && !EMAIL_RE.test(form.email)) {
+            setEmailError('THIS DOES NOT LOOK LIKE A VALID ADDRESS — my reply goes here, so double-check it.');
+            return false;
+        }
+        setEmailError(null);
+        return true;
+    };
 
     const onSubmit = async (e) => {
         e.preventDefault();
+        if (!EMAIL_RE.test(form.email)) {
+            setEmailError('THIS DOES NOT LOOK LIKE A VALID ADDRESS — my reply goes here, so double-check it.');
+            return;
+        }
         setSending(true);
         setStatus(null);
+        const replyAddress = form.email;
         try {
             const res = await fetch('/api/contact', {
                 method: 'POST',
@@ -23,7 +43,7 @@ export default function Contact() {
                 body: JSON.stringify(form),
             });
             if (!res.ok) throw new Error('send failed');
-            setStatus({ ok: true, msg: 'MESSAGE SENT — I will get back to you soon.' });
+            setStatus({ ok: true, msg: `MESSAGE SENT — my reply will go to ${replyAddress}.` });
             setForm({ name: '', email: '', subject: '', text: '', company: '' });
         } catch {
             setStatus({ ok: false, msg: 'SOMETHING WENT WRONG — please try again in a minute.' });
@@ -62,7 +82,22 @@ export default function Contact() {
                     </div>
                     <div className="field">
                         <label htmlFor="email">YOUR EMAIL</label>
-                        <input id="email" name="email" type="email" value={form.email} onChange={onChange} required maxLength={200} />
+                        <input
+                            id="email"
+                            name="email"
+                            type="email"
+                            value={form.email}
+                            onChange={onChange}
+                            onBlur={checkEmail}
+                            className={emailError ? 'invalid' : undefined}
+                            required
+                            maxLength={200}
+                        />
+                        {emailError ? (
+                            <div className="field-error">{emailError}</div>
+                        ) : (
+                            <div className="field-hint">I reply to this address — make sure it&apos;s one you check.</div>
+                        )}
                     </div>
                     <div className="field">
                         <label htmlFor="subject">SUBJECT</label>
