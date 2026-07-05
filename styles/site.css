@@ -145,7 +145,7 @@
 .hero {
     display: flex;
     border-bottom: 1px solid var(--border);
-    min-height: 660px;
+    min-height: 700px;
 }
 
 .hero-copy {
@@ -212,7 +212,7 @@
 }
 
 .hero-img {
-    flex: 1.45;
+    flex: 1.7;
     position: relative;
 }
 
