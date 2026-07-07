@@ -29,6 +29,33 @@ export default function SiteLayout({ children, title, description }) {
         document.documentElement.dataset.theme = theme;
     }, [theme]);
 
+    // Scroll reveals. Motion is opt-in: .anim on <html> gates every
+    // animation in site.css, so without JS the page renders fully
+    // visible. Elements marked data-reveal fade up once when they
+    // enter the viewport (stagger via --reveal-delay inline).
+    useEffect(() => {
+        document.documentElement.classList.add('anim');
+        const els = Array.from(document.querySelectorAll('[data-reveal]'));
+        if (!els.length) return undefined;
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            els.forEach((el) => el.classList.add('in-view'));
+            return undefined;
+        }
+        const io = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in-view');
+                        io.unobserve(entry.target);
+                    }
+                });
+            },
+            { threshold: 0.12, rootMargin: '0px 0px -8% 0px' }
+        );
+        els.forEach((el) => io.observe(el));
+        return () => io.disconnect();
+    }, [router.pathname]);
+
     const toggleTheme = () => {
         setTheme((t) => {
             const next = t === 'dark' ? 'light' : 'dark';
@@ -76,7 +103,8 @@ export default function SiteLayout({ children, title, description }) {
                 </div>
             </nav>
 
-            <main className="site-main">{children}</main>
+            {/* key remounts main per route so the page-enter fade replays */}
+            <main className="site-main" key={router.pathname}>{children}</main>
 
             <footer className="site-footer">
                 <div>

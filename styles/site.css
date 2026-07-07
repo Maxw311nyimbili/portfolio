@@ -100,10 +100,29 @@
 .nav-item {
     color: var(--muted);
     transition: color 0.15s ease;
+    position: relative;
+}
+
+.nav-item::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -4px;
+    height: 1px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .nav-item:hover {
     color: var(--text);
+}
+
+.nav-item:hover::after,
+.nav-item.active::after {
+    transform: scaleX(1);
 }
 
 .nav-item.active {
@@ -267,6 +286,15 @@
     gap: 20px;
     border-top: 1px solid var(--border);
     padding-top: 16px;
+    transition: border-top-color 0.2s ease;
+}
+
+.exp-row:hover {
+    border-top-color: var(--accent);
+}
+
+.exp-row:hover .exp-date {
+    color: var(--accent);
 }
 
 .exp-date {
@@ -275,6 +303,7 @@
     flex-shrink: 0;
     font-size: 12px;
     color: var(--muted);
+    transition: color 0.2s ease;
 }
 
 .exp-role {
@@ -365,6 +394,7 @@
     background: var(--bg);
     padding-bottom: 20px;
     display: block;
+    overflow: hidden; /* clips the hover zoom on the image */
     transition: background 0.15s ease;
 }
 
@@ -378,11 +408,12 @@
     object-fit: cover;
     display: block;
     filter: var(--img-filter);
-    transition: filter 0.2s ease;
+    transition: filter 0.3s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .project-card:hover img {
     filter: none;
+    transform: scale(1.03);
 }
 
 .project-title {
@@ -595,6 +626,109 @@
 
 .footer-links a:hover {
     color: var(--accent);
+}
+
+/* ---------------- motion ---------------- */
+
+/* Every rule here is gated on html.anim, which SiteLayout adds once
+   JS runs — no JS (or a crawler) means no hidden content, ever. */
+
+/* scroll reveals: elements marked data-reveal fade up once when the
+   IntersectionObserver in SiteLayout sees them enter the viewport */
+.anim [data-reveal] {
+    opacity: 0;
+    transform: translateY(16px);
+    transition:
+        opacity 0.6s ease var(--reveal-delay, 0ms),
+        transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms);
+}
+
+.anim [data-reveal].in-view {
+    opacity: 1;
+    transform: none;
+}
+
+/* soft fade when navigating between pages */
+.anim .site-main {
+    animation: page-enter 0.4s ease both;
+}
+
+@keyframes page-enter {
+    from {
+        opacity: 0;
+    }
+}
+
+/* hero / page-head entrance — above the fold, so time-based rather
+   than scroll-based, with a short stagger down the copy */
+.anim .hero-copy > *,
+.anim .page-head > * {
+    animation: rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.anim .hero-copy > :nth-child(2),
+.anim .page-head > :nth-child(2) {
+    animation-delay: 0.08s;
+}
+
+.anim .hero-copy > :nth-child(3) {
+    animation-delay: 0.16s;
+}
+
+.anim .hero-copy > :nth-child(4) {
+    animation-delay: 0.24s;
+}
+
+@keyframes rise {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+}
+
+.anim .hero-img img {
+    animation: img-reveal 1.1s ease both;
+}
+
+@keyframes img-reveal {
+    from {
+        opacity: 0;
+        transform: scale(1.04);
+    }
+}
+
+/* hairline borders cross-fade with the rest of the theme toggle
+   (.exp-row and form fields already transition their own borders) */
+.site-nav,
+.hero,
+.hero-copy,
+.about-exp,
+.about,
+.skills,
+.skill-col,
+.page-head,
+.projects-section,
+.contact-wrap,
+.contact-info {
+    transition: border-color 0.25s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .anim [data-reveal],
+    .anim .site-main,
+    .anim .hero-copy > *,
+    .anim .page-head > *,
+    .anim .hero-img img {
+        animation: none;
+        transition: none;
+        opacity: 1;
+        transform: none;
+    }
+
+    .project-card img,
+    .nav-item::after {
+        transition: none;
+    }
 }
 
 /* ---------------- responsive ---------------- */
