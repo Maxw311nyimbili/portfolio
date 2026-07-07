@@ -66,7 +66,7 @@ export default function Contact() {
             </div>
 
             <div className="contact-wrap">
-                <div className="contact-info">
+                <div className="contact-info" data-reveal>
                     <div className="section-label">DIRECT</div>
                     <p>
                         The form is the fastest way to reach me. You can also find me on
@@ -75,7 +75,12 @@ export default function Contact() {
                     <p>Based in Lusaka, Zambia. Open to remote work worldwide.</p>
                 </div>
 
-                <form className="contact-form" onSubmit={onSubmit}>
+                <form
+                    className="contact-form"
+                    onSubmit={onSubmit}
+                    data-reveal
+                    style={{ '--reveal-delay': '120ms' }}
+                >
                     <div className="field">
                         <label htmlFor="name">NAME</label>
                         <input id="name" name="name" value={form.name} onChange={onChange} required maxLength={100} />

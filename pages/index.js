@@ -54,7 +54,7 @@ export default function Home() {
 
             {/* about + experience */}
             <section className="about-exp">
-                <div className="about">
+                <div className="about" data-reveal>
                     <div className="section-label">ABOUT</div>
                     <p className="about-lead">
                         FastAPI &amp; Go backends. Flutter mobile apps. Systems-first:
@@ -66,10 +66,15 @@ export default function Home() {
                     </p>
                 </div>
                 <div className="experience">
-                    <div className="section-label">EXPERIENCE</div>
+                    <div className="section-label" data-reveal>EXPERIENCE</div>
                     <div className="exp-list">
-                        {EXPERIENCE.map((e) => (
-                            <div className="exp-row" key={e.role}>
+                        {EXPERIENCE.map((e, i) => (
+                            <div
+                                className="exp-row"
+                                key={e.role}
+                                data-reveal
+                                style={{ '--reveal-delay': `${i * 90}ms` }}
+                            >
                                 <div className="exp-date">{e.date}</div>
                                 <div>
                                     <div className="exp-role">{e.role}</div>
@@ -83,8 +88,13 @@ export default function Home() {
 
             {/* skills */}
             <section className="skills">
-                {SKILLS.map((s) => (
-                    <div className="skill-col" key={s.label}>
+                {SKILLS.map((s, i) => (
+                    <div
+                        className="skill-col"
+                        key={s.label}
+                        data-reveal
+                        style={{ '--reveal-delay': `${i * 90}ms` }}
+                    >
                         <div className="section-label">{s.label}</div>
                         <div className="skill-items">
                             {s.items.map((line) => (

@@ -123,10 +123,15 @@ export default function Projects() {
 
             {GROUPS.map((group) => (
                 <section className="projects-section" key={group.label}>
-                    <div className="section-label">{group.label}</div>
+                    <div className="section-label" data-reveal>{group.label}</div>
                     <div className="project-grid">
-                        {group.projects.map((p) => (
-                            <div className="project-card" key={p.title}>
+                        {group.projects.map((p, i) => (
+                            <div
+                                className="project-card"
+                                key={p.title}
+                                data-reveal
+                                style={{ '--reveal-delay': `${(i % 3) * 90}ms` }}
+                            >
                                 <img src={p.img} alt={p.title} />
                                 <div className="project-title">{p.title}</div>
                                 <div className="project-desc">{p.desc}</div>
