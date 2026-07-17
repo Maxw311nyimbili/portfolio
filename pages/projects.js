@@ -1,6 +1,9 @@
+import { useState } from 'react';
 import SiteLayout from '../components/SiteLayout';
+import { PROJECTS_DETAIL } from '../data/projectsData';
+import ProjectDrawer from '../components/ProjectDrawer';
 
-// Standalone projects page — all work, grouped by discipline,
+// Standalone projects page - all work, grouped by discipline,
 // in the "Portfolio Final" design language.
 
 const GROUPS = [
@@ -18,7 +21,7 @@ const GROUPS = [
             {
                 img: '/images/p1.png',
                 title: 'Paper Summary',
-                desc: '45 min of reading → 10 second synthesis. Research papers deconstructed by llama-3.3-70b on Groq.',
+                desc: '45 min of reading to 10 second synthesis. Research papers deconstructed by llama-3.3-70b on Groq.',
                 tech: 'Next.js · FastAPI · Groq · PyPDF',
                 github: 'https://github.com/Maxw311nyimbili/paper_summary_frontend',
                 demo: 'https://www.youtube.com/watch?v=zyi6xoJZgD0',
@@ -26,7 +29,7 @@ const GROUPS = [
             {
                 img: '/images/p3.png',
                 title: 'Propel',
-                desc: 'Resume optimization against job descriptions — ATS keywords, skill gaps, data-driven suggestions.',
+                desc: 'Resume optimization against job descriptions - ATS keywords, skill gaps, data-driven suggestions.',
                 tech: 'Next.js · FastAPI · Groq · Framer Motion',
                 github: 'https://github.com/Maxw311nyimbili/propel_app_frontend',
                 demo: 'https://www.youtube.com/watch?v=udZ7bsnvw1M',
@@ -42,7 +45,7 @@ const GROUPS = [
             {
                 img: '/images/nkani.png',
                 title: 'Nkani News Aggregator',
-                desc: 'Real-time news scraping with VADER sentiment analysis — the emotional tone of every story, upfront.',
+                desc: 'Real-time news scraping with VADER sentiment analysis - the emotional tone of every story, upfront.',
                 tech: 'Flask · NLP · VADER · Beautiful Soup',
                 github: 'https://github.com/Maxw311nyimbili/nkani_aggregator',
                 demo: 'https://www.youtube.com/watch?v=53Kua8HQNzE',
@@ -63,7 +66,7 @@ const GROUPS = [
             {
                 img: '/images/fullstack-2.png',
                 title: 'Berkshire Hathaway Redesign',
-                desc: 'The famously plain corporate site, rebuilt — minimal, responsive, still all substance.',
+                desc: 'The famously plain corporate site, rebuilt - minimal, responsive, still all substance.',
                 tech: 'React (Vite) · Node.js · MongoDB · Tailwind',
                 github: 'https://github.com/Maxw311nyimbili/FUTURE_FS_03',
                 demo: 'https://future-fs-03-drab.vercel.app/',
@@ -83,7 +86,7 @@ const GROUPS = [
             {
                 img: '/images/events_manager.png',
                 title: 'Events Manager',
-                desc: 'Event scheduling desktop app — fast lookups via HashMap-backed storage.',
+                desc: 'Event scheduling desktop app - fast lookups via HashMap-backed storage.',
                 tech: 'Java · JavaFX',
                 github: 'https://github.com/Maxw311nyimbili/eventsManager',
                 demo: 'https://www.youtube.com/watch?v=X5PeW4KRCQE',
@@ -91,7 +94,7 @@ const GROUPS = [
             {
                 img: '/images/chronoscholar.png',
                 title: 'ChronoScholar',
-                desc: 'Task management meets GPA tracking — daily productivity tied to academic goals.',
+                desc: 'Task management meets GPA tracking - daily productivity tied to academic goals.',
                 tech: 'Java · JavaFX · SQL',
                 github: 'https://github.com/Maxw311nyimbili/chronoScholar',
                 demo: 'https://www.youtube.com/watch?v=pe4Qz30JqQk',
@@ -108,15 +111,21 @@ const GROUPS = [
 ];
 
 export default function Projects() {
+    const [selectedProject, setSelectedProject] = useState(null);
+
+    const handleCardClick = (project) => {
+        setSelectedProject(project);
+    };
+
     return (
         <SiteLayout
-            title="Projects — Maxwell Nyimbili"
+            title="Projects / Maxwell Nyimbili"
             description="AI engineering, full-stack, and systems projects by Maxwell Nyimbili."
         >
             <div className="page-head">
                 <h1>Selected work.</h1>
                 <p>
-                    AI engineering, full-stack builds, and systems projects — each one a
+                    AI engineering, full-stack builds, and systems projects - each one a
                     problem worth solving, not a tutorial retread.
                 </p>
             </div>
@@ -130,7 +139,8 @@ export default function Projects() {
                                 className="project-card"
                                 key={p.title}
                                 data-reveal
-                                style={{ '--reveal-delay': `${(i % 3) * 90}ms` }}
+                                style={{ '--reveal-delay': `${(i % 3) * 90}ms`, cursor: 'pointer' }}
+                                onClick={() => handleCardClick(p)}
                             >
                                 <img src={p.img} alt={p.title} />
                                 <div className="project-title">{p.title}</div>
@@ -138,17 +148,48 @@ export default function Projects() {
                                 <div className="project-tech">{p.tech}</div>
                                 <div className="project-links">
                                     {p.github && (
-                                        <a href={p.github} target="_blank" rel="noopener noreferrer">GITHUB ↗</a>
+                                        <a 
+                                            href={p.github} 
+                                            target="_blank" 
+                                            rel="noopener noreferrer"
+                                            onClick={(e) => e.stopPropagation()}
+                                        >
+                                            GITHUB ↗
+                                        </a>
                                     )}
                                     {p.demo && (
-                                        <a href={p.demo} target="_blank" rel="noopener noreferrer">DEMO ↗</a>
+                                        <a 
+                                            href={p.demo} 
+                                            target="_blank" 
+                                            rel="noopener noreferrer"
+                                            onClick={(e) => e.stopPropagation()}
+                                        >
+                                            DEMO ↗
+                                        </a>
                                     )}
+                                    <button
+                                        className="project-drawer-trigger-btn"
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            handleCardClick(p);
+                                        }}
+                                    >
+                                        TECHNICAL SPECS ↗
+                                    </button>
                                 </div>
                             </div>
                         ))}
                     </div>
                 </section>
             ))}
+
+            {selectedProject && (
+                <ProjectDrawer 
+                    project={selectedProject}
+                    detail={PROJECTS_DETAIL[selectedProject.title]}
+                    onClose={() => setSelectedProject(null)}
+                />
+            )}
         </SiteLayout>
     );
 }
